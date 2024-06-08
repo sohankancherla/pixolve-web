@@ -36,6 +36,7 @@ export default function SidebarItem({
 }) {
   const Icon = icons[icon as keyof typeof icons];
   const pathname = usePathname();
+
   return (
     <li>
       <Link
