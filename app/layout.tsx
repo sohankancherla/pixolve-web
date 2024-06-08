@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type { Metadata } from 'next';
-import { Inter, Poppins } from 'next/font/google';
+import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -10,15 +10,14 @@ import ThemeProvider from '@/components/theme-provider';
 
 import { cn } from '@/lib/utils';
 
-const inter = Inter({
-  subsets: ['latin'],
+const inter = localFont({
+  src: '../fonts/Inter-Variable.ttf',
   variable: '--font-inter',
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
-const poppins = Poppins({
-  subsets: ['latin'],
+
+const poppins = localFont({
+  src: '../fonts/Poppins-Variable.ttf',
   variable: '--font-poppins',
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
 const defaultUrl = process.env.VERCEL_URL
@@ -47,7 +46,7 @@ export default function RootLayout({
         className={cn(
           inter.variable,
           poppins.variable,
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-screen bg-background font-sans',
         )}
       >
         <ThemeProvider

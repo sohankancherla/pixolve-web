@@ -79,7 +79,7 @@ h1 {
   scroll-margin: 5rem;
   font-size: 2.25rem;
   line-height: 2.5rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.025em;
 }
 
@@ -87,7 +87,7 @@ h2 {
   scroll-margin: 5rem;
   font-size: 1.875rem;
   line-height: 2.25rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.025em;
 }
 
@@ -95,7 +95,7 @@ h3 {
   scroll-margin: 5rem;
   font-size: 1.5rem;
   line-height: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.025em;
 }
 
@@ -103,32 +103,26 @@ h4 {
   scroll-margin: 5rem;
   font-size: 1.25rem;
   line-height: 1.75rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.025em;
 }
 
 h5 {
   font-size: 1.125rem;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.5rem;
   letter-spacing: -0.025em;
 }
 
 h6 {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.25rem;
   letter-spacing: -0.025em;
 }
 
 p {
-  font-size: 1rem;
-  line-height: 1.3rem;
-  letter-spacing: -0.01em;
-}
-
-span {
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.3rem;
   letter-spacing: -0.01em;
 }

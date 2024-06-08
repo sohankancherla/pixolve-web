@@ -59,7 +59,7 @@ export default function SidebarItem({
         />
         <span
           className={cn(
-            'hidden lg:block font-display text-lg text-muted-foreground leading-5 tracking-tight ml-6 group-hover/link:text-foreground group-hover/link:translate-x-2 transistion-all duration-300 ease-in-out motion-reduce:transition-none motion-reduce:translate-x-0',
+            'hidden lg:block font-display text-muted-foreground leading-5 tracking-tight ml-6 group-hover/link:text-foreground group-hover/link:translate-x-2 transistion-all duration-300 ease-in-out motion-reduce:transition-none motion-reduce:translate-x-0',
             pathname === href &&
               'text-transparent bg-clip-text bg-gradient-to-br from-violet-500 to-pink-400',
           )}
