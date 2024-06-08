@@ -7,7 +7,7 @@ export default async function AppLayout({
 }) {
   return (
     <>
-      <div className="flex">
+      <div className="sm:flex">
         <Sidebar />
         <main>{children}</main>
       </div>
