@@ -37,10 +37,10 @@ export default function SidebarItem({
   const Icon = icons[icon as keyof typeof icons];
   const pathname = usePathname();
   return (
-    <li role="none">
+    <li>
       <Link
         href={href}
-        role="menuitem"
+        role="button"
         aria-current={pathname === href ? 'page' : undefined}
         aria-label={`Navigate to ${children}`}
         className={cn(
