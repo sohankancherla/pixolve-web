@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           inter.variable,
@@ -56,8 +56,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SpeedInsights />
-          <Analytics />
+          {process.env.VERCEL_URL && (
+            <>
+              <SpeedInsights />
+              <Analytics />
+            </>
+          )}
           {children}
         </ThemeProvider>
       </body>
