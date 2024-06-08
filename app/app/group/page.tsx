@@ -1,11 +1,9 @@
+import React from 'react';
+
 export const metadata = {
-  title: "Group",
+  title: 'Group',
 };
 
 export default function Group() {
-  return (
-    <>
-      <h1>Group</h1>
-    </>
-  );
+  return <h1>Group</h1>;
 }

@@ -1,11 +1,9 @@
+import React from 'react';
+
 export const metadata = {
-  title: "Find",
+  title: 'Find',
 };
 
 export default function Find() {
-  return (
-    <>
-      <h1>Find</h1>
-    </>
-  );
+  return <h1>Find</h1>;
 }

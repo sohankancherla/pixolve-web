@@ -1,15 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
+import React from 'react';
 
-import SidebarItem from "@/components/sidebar-item";
+import Image from 'next/image';
+import Link from 'next/link';
+
+import SidebarItem from '@/components/sidebar-item';
 
 const navItems = [
-  { name: "Home", href: "/app", icon: "home" },
-  { name: "Enhance", href: "/app/enhance", icon: "wandSparkles" },
-  { name: "Deblur", href: "/app/deblur", icon: "droplet" },
-  { name: "Merge", href: "/app/merge", icon: "merge" },
-  { name: "Find", href: "/app/find", icon: "squareDashedMousePointer" },
-  { name: "Group", href: "/app/group", icon: "images" },
+  { name: 'Home', href: '/app', icon: 'home' },
+  { name: 'Enhance', href: '/app/enhance', icon: 'wandSparkles' },
+  { name: 'Deblur', href: '/app/deblur', icon: 'droplet' },
+  { name: 'Merge', href: '/app/merge', icon: 'merge' },
+  { name: 'Find', href: '/app/find', icon: 'squareDashedMousePointer' },
+  { name: 'Group', href: '/app/group', icon: 'images' },
 ];
 
 export default function Sidebar() {
