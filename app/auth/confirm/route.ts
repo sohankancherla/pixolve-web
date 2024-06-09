@@ -24,10 +24,14 @@ export async function GET(request: NextRequest) {
     if (!error) {
       redirectTo.searchParams.delete('next');
       return NextResponse.redirect(redirectTo);
+    } else {
+      redirectTo.pathname = '/auth/error';
+      redirectTo.searchParams.set('error', error.message);
+      return NextResponse.redirect(redirectTo);
     }
   }
 
-  // return the user to an error page with some instructions
-  redirectTo.pathname = '/error';
+  redirectTo.pathname = '/auth/error';
+  redirectTo.searchParams.set('error', 'Invalid token_hash or type');
   return NextResponse.redirect(redirectTo);
 }

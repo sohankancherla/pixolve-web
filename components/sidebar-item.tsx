@@ -11,6 +11,7 @@ import {
   Images,
   Merge,
   SquareDashedMousePointer,
+  UserRound,
   WandSparkles,
 } from 'lucide-react';
 
@@ -22,6 +23,7 @@ const icons = {
   images: Images,
   merge: Merge,
   squareDashedMousePointer: SquareDashedMousePointer,
+  userRound: UserRound,
   wandSparkles: WandSparkles,
 };
 
