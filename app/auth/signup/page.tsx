@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import { CircleCheckBig } from 'lucide-react';
+import SignUp from '@/components/signup';
 
 function ListItem({
   heading,
@@ -30,14 +31,14 @@ function ListItem({
 
 export default function Signup() {
   return (
-    <main className="flex items-center justify-center p-4 min-h-screen h-full overflow-y-auto bg-gradient-to-bl from-[#ffffff] to-[#f3f4f6] dark:from-[#1f1f1f] dark:to-[#121317]">
+    <main className="flex items-center justify-center p-0 min-h-screen h-full overflow-y-auto bg-gradient-to-bl from-[#ffffff] to-[#f3f4f6] dark:from-[#1f1f1f] dark:to-[#121317]">
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/3 w-[200px] h-[200px] bg-gradient-to-r from-purple-400 to-blue-500 opacity-30 rounded-full filter blur-xl" />
         <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-gradient-to-r from-pink-400 to-red-500 opacity-30 rounded-full filter blur-2xl" />
         <div className="absolute top-1/4 right-0 w-[150px] h-[150px] bg-gradient-to-r from-yellow-400 to-orange-500 opacity-30 rounded-full filter blur-lg" />
       </div>
-      <div className="w-full max-w-5xl lg:flex">
-        <section className="font-display text-muted-foreground lg:p-10 flex-1 flex flex-col">
+      <div className="w-full max-w-5xl lg:flex p-10 z-10">
+        <section className="font-display text-muted-foreground flex-1 flex flex-col items-center lg:items-start">
           <Image
             src="/logo-purple.png"
             alt="Pixolve"
@@ -68,8 +69,8 @@ export default function Signup() {
             />
           </ul>
         </section>
-        <section className="h-full w-full p-10 flex flex-col justify-center items-center flex-1 font-sans">
-          Test
+        <section className="flex flex-col justify-center items-center flex-1">
+          <SignUp />
         </section>
       </div>
     </main>
