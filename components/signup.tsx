@@ -1,12 +1,16 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
 import Link from 'next/link';
 
+import createClient from '@/supabase/client';
+
+import { Loader2 } from 'lucide-react';
+import Alert from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -31,17 +35,20 @@ const formSchema = z.object({
   email: z.string().email('Invalid email address'),
   password: z
     .string()
-    .min(8, 'Password must be at least 8 characters')
-    .regex(/[a-z]/, 'Password must contain at least one lowercase letter')
-    .regex(/[A-Z]/, 'Password must contain at least one uppercase letter')
-    .regex(/[0-9]/, 'Password must contain at least one number')
+    .min(8, 'Password should be at least 8 characters')
+    .regex(/[a-z]/, 'Password should contain at least one lowercase letter')
+    .regex(/[A-Z]/, 'Password should contain at least one uppercase letter')
+    .regex(/[0-9]/, 'Password should contain at least one number')
     .regex(
       /[^a-zA-Z0-9]/,
-      'Password must contain at least one special character',
+      'Password should contain at least one special character',
     ),
 });
 
 export default function SignUp() {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [errorAlert, setErrorAlert] = useState<string | null>(null);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,9 +59,34 @@ export default function SignUp() {
     },
   });
 
-  const handleSubmit = (data) => {
-    // Add your sign-up logic here
-    console.log(data);
+  const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+    setLoading(true);
+    const supabase = createClient();
+    await supabase.auth
+      .signUp({
+        email: values.email,
+        password: values.password,
+        options: {
+          data: { full_name: `${values.firstName} ${values.lastName}` },
+        },
+      })
+      .then(() => setLoading(false))
+      .catch((error) => {
+        setLoading(false);
+        if (error.message === 'User already registered') {
+          form.setError('email', {
+            type: 'manual',
+            message: 'This email is already in use',
+          });
+        } else if (error.message.includes('Password')) {
+          form.setError('password', {
+            type: 'manual',
+            message: error.message,
+          });
+        } else {
+          setErrorAlert(error.message);
+        }
+      });
   };
 
   return (
@@ -102,6 +134,7 @@ export default function SignUp() {
                 <span className="text-muted-foreground text-sm px-6">or</span>
                 <div className="bg-input w-full h-[1px]" />
               </div>
+              {errorAlert && <Alert color="red" text={errorAlert} />}
               <div className="grid grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
@@ -160,7 +193,8 @@ export default function SignUp() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">
+              <Button disabled={loading} type="submit" className="w-full">
+                {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Create an account
               </Button>
             </div>
