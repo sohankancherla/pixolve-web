@@ -7,7 +7,7 @@ import * as z from 'zod';
 
 import Link from 'next/link';
 
-import createClient from '@/supabase/client';
+import { signup } from '@/app/auth/actions';
 
 import { Loader2 } from 'lucide-react';
 import Alert from '@/components/ui/alert';
@@ -61,15 +61,15 @@ export default function SignUp() {
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     setLoading(true);
-    const supabase = createClient();
-    await supabase.auth
-      .signUp({
-        email: values.email,
-        password: values.password,
-        options: {
-          data: { full_name: `${values.firstName} ${values.lastName}` },
-        },
-      })
+    setErrorAlert(null);
+
+    const formData = new FormData();
+    formData.append('firstName', values.firstName);
+    formData.append('lastName', values.lastName);
+    formData.append('email', values.email);
+    formData.append('password', values.password);
+
+    await signup(formData)
       .then(() => setLoading(false))
       .catch((error) => {
         setLoading(false);

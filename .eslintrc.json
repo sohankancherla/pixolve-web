@@ -12,5 +12,5 @@
     "operator-linebreak": "off",
     "react/jsx-props-no-spreading": "off"
   },
-  "ignorePatterns": ["node_modules/", ".next/", "out/", "ui"]
+  "ignorePatterns": ["node_modules/", ".next/", "out/", "ui", "route.ts"]
 }
