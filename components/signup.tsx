@@ -69,10 +69,12 @@ export default function SignUp() {
     formData.append('email', values.email);
     formData.append('password', values.password);
 
-    await signup(formData)
-      .then(() => setLoading(false))
-      .catch((error) => {
-        setLoading(false);
+    try {
+      await signup(formData);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      if (error instanceof Error) {
         if (error.message === 'User already registered') {
           form.setError('email', {
             type: 'manual',
@@ -86,7 +88,11 @@ export default function SignUp() {
         } else {
           setErrorAlert(error.message);
         }
-      });
+      } else {
+        // Handle unexpected error types
+        setErrorAlert('An unexpected error occurred');
+      }
+    }
   };
 
   return (

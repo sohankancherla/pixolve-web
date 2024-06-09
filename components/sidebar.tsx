@@ -21,7 +21,7 @@ const navItemsBottom = [
 export default function Sidebar() {
   return (
     <nav
-      className="flex small:block fixed bottom-0 right-0 left-0 sm:static sm:min-h-screen sm:w-16 lg:hover:w-56 lg:overflow-x-hidden p-2 border-t sm:border-r border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-black transition-all duration-500 ease-in-out motion-reduce:transition-none group/nav"
+      className="flex small:block fixed bottom-0 right-0 left-0 sm:static sm:min-h-screen sm:w-16 lg:hover:w-56 lg:overflow-x-hidden px-2 py-2 sm:py-6 border-t sm:border-r border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-black transition-all duration-500 ease-in-out motion-reduce:transition-none group/nav"
       aria-label="Main Navigation"
     >
       <section className="flex flex-col h-full w-full">
