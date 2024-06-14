@@ -68,7 +68,7 @@ export default function Signup({ children }: { children: React.ReactNode }) {
             />
           </ul>
         </section>
-        <section className="flex flex-col justify-center items-center flex-1">
+        <section className="flex flex-col justify-start items-center flex-1">
           {children}
         </section>
       </div>

@@ -43,6 +43,6 @@ export async function signup(formData: FormData) {
   if (result.error) {
     throw new Error(result.error.message);
   } else {
-    redirect('/auth/signup/email-verification');
+    redirect('/auth/signup/verify-email');
   }
 }
