@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Sidebar from '@/components/sidebar';
+import Sidebar from '@/components/app/sidebar';
 
 export default async function AppLayout({
   children,

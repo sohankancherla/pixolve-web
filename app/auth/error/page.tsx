@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BackHome from '@/components/back-home';
+import BackHome from '@/components/messages/back-home';
 
 export default function AuthError({
   searchParams,

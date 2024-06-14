@@ -33,15 +33,16 @@ export async function signup(formData: FormData) {
     password: formData.get('password') as string,
     options: {
       data: {
-        full_name: `${formData.get('firstName')} ${formData.get('lastName')}`,
+        first_name: formData.get('firstName') as string,
+        last_name: formData.get('lastName') as string,
       },
     },
   };
 
-  const { error } = await supabase.auth.signUp(data);
-  if (error) {
-    throw new Error(error.message);
+  const result = await supabase.auth.signUp(data);
+  if (result.error) {
+    throw new Error(result.error.message);
   } else {
-    redirect('/auth/email-verification');
+    redirect('/auth/signup/email-verification');
   }
 }
