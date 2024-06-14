@@ -45,7 +45,7 @@ const formSchema = z.object({
     ),
 });
 
-export default function SignUp() {
+export default function SignUpPage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [errorAlert, setErrorAlert] = useState<string | null>(null);
 

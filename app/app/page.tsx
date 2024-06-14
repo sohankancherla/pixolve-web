@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Home',
 };
 
-export default async function Home() {
+export default async function AppHomePage() {
   await authCheck();
   return <h1>Home</h1>;
 }

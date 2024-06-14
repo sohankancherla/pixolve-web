@@ -4,6 +4,6 @@ export const metadata = {
   title: 'Group',
 };
 
-export default function Group() {
+export default function GroupPage() {
   return <h1>Group</h1>;
 }

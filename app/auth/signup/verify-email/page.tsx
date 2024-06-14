@@ -2,11 +2,7 @@ import React from 'react';
 
 import { Card, CardContent } from '@/components/ui/card';
 
-export const metadata = {
-  title: 'Email Verification',
-};
-
-export default function EmailVerification() {
+export default function EmailVerificationPage() {
   return (
     <Card className="mx-auto max-w-sm flex flex-col justify-center items-center p-2">
       <CardContent className="flex flex-col justify-center items-center text-center gap-4">

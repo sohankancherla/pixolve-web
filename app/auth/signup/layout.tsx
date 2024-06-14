@@ -4,6 +4,10 @@ import Image from 'next/image';
 
 import { CircleCheckBig } from 'lucide-react';
 
+export const metadata = {
+  title: 'Signup',
+};
+
 function ListItem({
   heading,
   paragraph,
@@ -28,7 +32,11 @@ function ListItem({
   );
 }
 
-export default function Signup({ children }: { children: React.ReactNode }) {
+export default function SignupLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <main className="flex items-center justify-center p-0 min-h-screen h-full overflow-y-auto bg-gradient-to-bl from-[#ffffff] to-[#f3f4f6] dark:from-[#1f1f1f] dark:to-[#121317]">
       <div className="absolute inset-0">
