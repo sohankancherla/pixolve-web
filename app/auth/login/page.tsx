@@ -56,12 +56,10 @@ export default function LogInPage() {
     formData.append('email', values.email);
     formData.append('password', values.password);
 
-    try {
-      await login(formData);
-      setLoading(false);
-    } catch (error: any) {
-      setLoading(false);
-      setErrorAlert(error.message);
+    const error = await login(formData);
+    setLoading(false);
+    if (error) {
+      setErrorAlert(error);
     }
   };
 

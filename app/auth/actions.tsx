@@ -16,14 +16,13 @@ export async function login(formData: FormData) {
   const result = await supabase.auth.signInWithPassword(data);
   if (result.error) {
     if (result.error.name === 'AuthApiError') {
-      throw new Error("The email or password you've entered is incorrect");
-    } else {
-      throw new Error('An error occurred. Please try again later.');
+      return "The email or password you've entered is incorrect";
     }
-  } else {
-    revalidatePath('/app', 'layout');
-    redirect('/app');
+    return 'An error occurred. Please try again later.';
   }
+  revalidatePath('/app', 'layout');
+  redirect('/app');
+  return null;
 }
 
 export async function signup(formData: FormData) {
