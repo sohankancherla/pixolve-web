@@ -59,17 +59,9 @@ export default function LogInPage() {
     try {
       await login(formData);
       setLoading(false);
-    } catch (error) {
+    } catch (error: any) {
       setLoading(false);
-      if (error instanceof Error) {
-        if (error.message === 'Invalid login credentials') {
-          setErrorAlert("The email or password you've entered is incorrect");
-        } else {
-          setErrorAlert(error.message);
-        }
-      } else {
-        setErrorAlert('An unexpected error occurred');
-      }
+      setErrorAlert(error.message);
     }
   };
 

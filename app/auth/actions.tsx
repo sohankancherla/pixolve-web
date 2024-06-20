@@ -15,6 +15,11 @@ export async function login(formData: FormData) {
 
   const result = await supabase.auth.signInWithPassword(data);
   if (result.error) {
+    // if (result.error.name === 'AuthApiError') {
+    //   throw new Error("The email or password you've entered is incorrect");
+    // } else {
+    //   throw new Error(result.error.message);
+    // }
     throw new Error(result.error.message);
   } else {
     revalidatePath('/app', 'layout');

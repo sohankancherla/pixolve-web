@@ -108,14 +108,24 @@ export default function Sidebar() {
           />
         </Link>
         <div className="flex sm:flex-col h-full w-full sm:justify-between sm:py-2">
-          <ul className="cursor-pointer flex justify-around sm:flex-col sm:gap-2 flex-[3] sm:flex-none">
+          <ul
+            className={cn(
+              'cursor-pointer flex justify-around sm:flex-col sm:gap-2 sm:flex-none',
+              `flex-[${navItemsTop.length}]`,
+            )}
+          >
             {navItemsTop.map((item) => (
               <SidebarItem key={item.name} href={item.href} icon={item.icon}>
                 {item.name}
               </SidebarItem>
             ))}
           </ul>
-          <ul className="cursor-pointer flex justify-around sm:flex-col sm:gap-2 flex-1 sm:flex-none">
+          <ul
+            className={cn(
+              'cursor-pointer flex justify-around sm:flex-col sm:gap-2 flex-1 sm:flex-none',
+              `flex-[${navItemsBottom.length}]`,
+            )}
+          >
             {navItemsBottom.map((item) => (
               <SidebarItem key={item.name} href={item.href} icon={item.icon}>
                 {item.name}
