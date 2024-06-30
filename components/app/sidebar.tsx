@@ -6,32 +6,52 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import {
-  FolderIcon,
-  SparklesIcon,
-  Square2StackIcon,
-  UserCircleIcon,
-} from '@heroicons/react/24/outline';
-
 import { cn } from '@/lib/utils';
 
+import { UserCircle, UserCircleFilled } from '../icons/user-circle';
+import { Folder, FolderFilled } from '../icons/folder';
+import { Sparkles, SparklesFilled } from '../icons/sparkles';
+import { Square2Stack, Square2StackFilled } from '../icons/square-2-stack';
+
 const navItemsTop = [
-  { name: 'Enhance', href: '/app/enhance', icon: SparklesIcon },
-  { name: 'Merge', href: '/app/merge', icon: Square2StackIcon },
-  { name: 'Organize', href: '/app/find', icon: FolderIcon },
+  {
+    name: 'Enhance',
+    href: '/app/enhance',
+    icon: Sparkles,
+    filled: SparklesFilled,
+  },
+  {
+    name: 'Merge',
+    href: '/app/merge',
+    icon: Square2Stack,
+    filled: Square2StackFilled,
+  },
+  {
+    name: 'Organize',
+    href: '/app/find',
+    icon: Folder,
+    filled: FolderFilled,
+  },
 ];
 
 const navItemsBottom = [
-  { name: 'Profile', href: '/app/profile', icon: UserCircleIcon },
+  {
+    name: 'Profile',
+    href: '/app/profile',
+    icon: UserCircle,
+    filled: UserCircleFilled,
+  },
 ];
 
 export function DesktopItem({
   href,
   icon: Icon,
+  filled: Filled,
   children,
 }: {
   href: string;
   icon: React.ComponentType<SVGProps<SVGSVGElement>>;
+  filled: React.ComponentType<SVGProps<SVGSVGElement>>;
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
@@ -44,24 +64,29 @@ export function DesktopItem({
         aria-current={pathname === href ? 'page' : undefined}
         aria-label={`Navigate to ${children}`}
         className={cn(
-          'flex w-full p-4 rounded-full group/link',
+          'flex w-full items-center p-4 rounded-full group/link',
           pathname === href ? 'bg-accent' : 'hover:bg-accent/50',
         )}
       >
-        <Icon
-          className={cn(
-            'h-6 w-6 mx-1 stroke-muted-foreground',
-            pathname === href &&
-              'stroke-violet-500 lg:group-hover/link:stroke-violet-500',
-          )}
-          strokeWidth={1.75}
-          aria-hidden="true"
-        />
+        {pathname !== href ? (
+          <Icon
+            className="h-6 w-6 mx-1 stroke-muted-foreground"
+            strokeWidth={1.75}
+            aria-hidden="true"
+          />
+        ) : (
+          <Filled
+            className="h-6 w-6 mx-1 text-violet-500"
+            strokeWidth={1.75}
+            aria-hidden="true"
+          />
+        )}
         <span
           className={cn(
-            'font-display text-sm sm:text-base text-muted-foreground leading-5 tracking-tight mt-2 sm:mt-0 sm:ml-6 lg:group-hover/link:translate-x-2 lg:transistion-all duration-300 ease-in-out motion-reduce:transition-none motion-reduce:translate-x-0 motion-reduce:lg:group-hover/link:translate-x-0',
-            pathname === href &&
-              'text-violet-500 sm:text-transparent sm:bg-clip-text sm:bg-gradient-to-br from-violet-500 to-pink-400 lg:group-hover/link:translate-x-0',
+            'font-display text-muted-foreground leading-5 tracking-tight ml-6 transistion-all duration-300 ease-in-out',
+            pathname === href
+              ? 'text-violet-500'
+              : 'group-hover/link:translate-x-2 motion-reduce:group-hover/link:translate-x-0',
           )}
         >
           {children}
@@ -89,14 +114,24 @@ export function DesktopNavbar() {
       <div className="flex flex-col h-full w-full justify-between py-2">
         <ul className="cursor-pointer flex flex-col gap-2">
           {navItemsTop.map((item) => (
-            <DesktopItem key={item.name} href={item.href} icon={item.icon}>
+            <DesktopItem
+              key={item.name}
+              href={item.href}
+              icon={item.icon}
+              filled={item.filled}
+            >
               {item.name}
             </DesktopItem>
           ))}
         </ul>
         <ul className="cursor-pointer flex flex-col gap-2">
           {navItemsBottom.map((item) => (
-            <DesktopItem key={item.name} href={item.href} icon={item.icon}>
+            <DesktopItem
+              key={item.name}
+              href={item.href}
+              icon={item.icon}
+              filled={item.filled}
+            >
               {item.name}
             </DesktopItem>
           ))}
