@@ -75,7 +75,7 @@ export function SidebarItem({
         />
         <span
           className={cn(
-            'font-display text-xs sm:text-base text-muted-foreground leading-5 tracking-tight mt-2 sm:mt-0 sm:ml-6 lg:group-hover/link:translate-x-2 lg:transistion-all duration-300 ease-in-out motion-reduce:transition-none motion-reduce:translate-x-0 motion-reduce:lg:group-hover/link:translate-x-0',
+            'font-display text-sm sm:text-base text-muted-foreground leading-5 tracking-tight mt-2 sm:mt-0 sm:ml-6 lg:group-hover/link:translate-x-2 lg:transistion-all duration-300 ease-in-out motion-reduce:transition-none motion-reduce:translate-x-0 motion-reduce:lg:group-hover/link:translate-x-0',
             pathname === href &&
               'text-violet-500 sm:text-transparent sm:bg-clip-text sm:bg-gradient-to-br from-violet-500 to-pink-400 lg:group-hover/link:translate-x-0',
           )}
