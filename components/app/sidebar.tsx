@@ -63,24 +63,19 @@ export function MobileItem({
         role="menuitem"
         aria-current={pathname === href ? 'page' : undefined}
         aria-label={`Navigate to ${children}`}
-        className="flex flex-col w-16 items-center group/link"
+        className="flex flex-col items-center group/link"
       >
         {pathname !== href ? (
           <Icon
             className="h-6 w-6 mx-1 stroke-muted-foreground"
-            strokeWidth={1.75}
             aria-hidden="true"
           />
         ) : (
-          <Filled
-            className="h-6 w-6 mx-1 text-violet-500"
-            strokeWidth={1.75}
-            aria-hidden="true"
-          />
+          <Filled className="h-6 w-6 mx-1 text-violet-500" aria-hidden="true" />
         )}
         <span
           className={cn(
-            'font-display text-sm text-muted-foreground leading-5 tracking-tight mt-2',
+            'font-display text-xs text-muted-foreground leading-5 tracking-tight mt-1',
             pathname === href && 'text-violet-500',
           )}
         >
