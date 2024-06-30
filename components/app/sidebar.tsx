@@ -1,76 +1,60 @@
 'use client';
 
-import React from 'react';
+import React, { SVGProps } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import {
-  Droplet,
-  Home,
-  Images,
-  Merge,
-  SquareDashedMousePointer,
-  UserRound,
-  WandSparkles,
-} from 'lucide-react';
+  FolderIcon,
+  SparklesIcon,
+  Square2StackIcon,
+  UserCircleIcon,
+} from '@heroicons/react/24/outline';
 
 import { cn } from '@/lib/utils';
 
-const icons = {
-  droplet: Droplet,
-  home: Home,
-  images: Images,
-  merge: Merge,
-  squareDashedMousePointer: SquareDashedMousePointer,
-  userRound: UserRound,
-  wandSparkles: WandSparkles,
-};
-
 const navItemsTop = [
-  // { name: 'Home', href: '/app', icon: 'home' },
-  { name: 'Enhance', href: '/app/enhance', icon: 'wandSparkles' },
-  // { name: 'Deblur', href: '/app/deblur', icon: 'droplet' },
-  { name: 'Merge', href: '/app/merge', icon: 'merge' },
-  { name: 'Find', href: '/app/find', icon: 'squareDashedMousePointer' },
-  // { name: 'Group', href: '/app/group', icon: 'images' },
+  { name: 'Enhance', href: '/app/enhance', icon: SparklesIcon },
+  { name: 'Merge', href: '/app/merge', icon: Square2StackIcon },
+  { name: 'Organize', href: '/app/find', icon: FolderIcon },
 ];
 
 const navItemsBottom = [
-  { name: 'Profile', href: '/app/profile', icon: 'userRound' },
+  { name: 'Profile', href: '/app/profile', icon: UserCircleIcon },
 ];
 
-export function SidebarItem({
+export function DesktopItem({
   href,
-  icon,
+  icon: Icon,
   children,
 }: {
   href: string;
-  icon: string;
+  icon: React.ComponentType<SVGProps<SVGSVGElement>>;
   children: React.ReactNode;
 }) {
-  const Icon = icons[icon as keyof typeof icons];
   const pathname = usePathname();
 
   return (
     <li>
       <Link
         href={href}
-        role="button"
+        role="menuitem"
         aria-current={pathname === href ? 'page' : undefined}
         aria-label={`Navigate to ${children}`}
         className={cn(
-          'flex flex-col sm:flex-row items-center w-20 sm:w-full p-2 sm:py-4 sm:px-3 rounded-full group/link',
-          pathname === href ? 'sm:bg-accent' : 'lg:hover:bg-accent/50',
+          'flex w-full p-4 rounded-full group/link',
+          pathname === href ? 'bg-accent' : 'hover:bg-accent/50',
         )}
       >
         <Icon
           className={cn(
-            'h-6 w-6 sm:h-4 sm:w-4 mx-1 flex-shrink-0 stroke-muted-foreground',
+            'h-6 w-6 mx-1 stroke-muted-foreground',
             pathname === href &&
               'stroke-violet-500 lg:group-hover/link:stroke-violet-500',
           )}
+          strokeWidth={1.75}
           aria-hidden="true"
         />
         <span
@@ -87,53 +71,41 @@ export function SidebarItem({
   );
 }
 
-export default function Sidebar() {
+export function DesktopNavbar() {
   return (
     <nav
-      className="flex small:block fixed bottom-0 right-0 left-0 sm:static sm:min-h-screen sm:w-56 px-2 py-2 sm:py-6 border-t sm:border-r border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-black group/nav"
+      className="hidden sm:flex flex-col min-h-screen w-56 px-2 py-6 border-r border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-black"
       aria-label="Main Navigation"
     >
-      <section className="flex flex-col h-full w-full">
-        <Link
-          href="/app"
-          className="hidden sm:block my-8"
-          aria-label="Pixolve Home"
-        >
-          <Image
-            src="/logo-purple.png"
-            alt="Pixolve"
-            width="120"
-            height="22"
-            className="mx-4"
-          />
-        </Link>
-        <div className="flex sm:flex-col h-full w-full sm:justify-between sm:py-2">
-          <ul
-            className={cn(
-              'cursor-pointer flex justify-around sm:flex-col sm:gap-2 sm:flex-none',
-              `flex-[${navItemsTop.length}]`,
-            )}
-          >
-            {navItemsTop.map((item) => (
-              <SidebarItem key={item.name} href={item.href} icon={item.icon}>
-                {item.name}
-              </SidebarItem>
-            ))}
-          </ul>
-          <ul
-            className={cn(
-              'cursor-pointer flex justify-around sm:flex-col sm:gap-2 sm:flex-none',
-              `flex-[${navItemsBottom.length}]`,
-            )}
-          >
-            {navItemsBottom.map((item) => (
-              <SidebarItem key={item.name} href={item.href} icon={item.icon}>
-                {item.name}
-              </SidebarItem>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <Link href="/app" className="py-4 my-4" aria-label="Pixolve Home">
+        <Image
+          src="/logo-purple.png"
+          alt="Pixolve"
+          width="120"
+          height="22"
+          className="mx-4"
+        />
+      </Link>
+      <div className="flex flex-col h-full w-full justify-between py-2">
+        <ul className="cursor-pointer flex flex-col gap-2">
+          {navItemsTop.map((item) => (
+            <DesktopItem key={item.name} href={item.href} icon={item.icon}>
+              {item.name}
+            </DesktopItem>
+          ))}
+        </ul>
+        <ul className="cursor-pointer flex flex-col gap-2">
+          {navItemsBottom.map((item) => (
+            <DesktopItem key={item.name} href={item.href} icon={item.icon}>
+              {item.name}
+            </DesktopItem>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
+}
+
+export default function Sidebar() {
+  return <DesktopNavbar />;
 }

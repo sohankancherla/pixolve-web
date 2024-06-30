@@ -80,11 +80,6 @@ const config = {
     },
   },
   plugins: [require('tailwindcss-animate')],
-  safelist: [
-    {
-      pattern: /^flex-\[\d+\]$/,
-    },
-  ],
 } satisfies Config;
 
 export default config;

@@ -10,7 +10,8 @@
   },
   "rules": {
     "operator-linebreak": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off"
   },
   "ignorePatterns": ["node_modules/", ".next/", "out/", "ui", "route.ts"]
 }
