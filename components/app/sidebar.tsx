@@ -57,7 +57,7 @@ export function MobileItem({
   const pathname = usePathname();
 
   return (
-    <li>
+    <li className="w-full">
       <Link
         href={href}
         role="menuitem"
@@ -92,7 +92,7 @@ export function MobileNavbar() {
       className="sm:hidden fixed bottom-0 w-full border-t border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-black"
       aria-label="Main Navigation"
     >
-      <ul className="cursor-pointer w-full flex justify-around gap-2 py-2">
+      <ul className="cursor-pointer w-full flex py-2">
         {navItemsTop.map((item) => (
           <MobileItem
             key={item.name}
