@@ -61,13 +61,13 @@ export function SidebarItem({
         aria-current={pathname === href ? 'page' : undefined}
         aria-label={`Navigate to ${children}`}
         className={cn(
-          'flex flex-col sm:flex-row items-center w-[83px]  sm:w-full p-2 sm:py-4 sm:px-3 rounded-full lg:hover:bg-accent/50 group/link',
-          pathname === href && 'sm:bg-accent',
+          'flex flex-col sm:flex-row items-center w-20 sm:w-full p-2 sm:py-4 sm:px-3 rounded-full group/link',
+          pathname === href ? 'sm:bg-accent' : 'lg:hover:bg-accent/50',
         )}
       >
         <Icon
           className={cn(
-            'h-6 w-6 sm:h-5 sm:w-5 mx-1 flex-shrink-0 stroke-muted-foreground lg:group-hover/link:stroke-foreground',
+            'h-6 w-6 sm:h-4 sm:w-4 mx-1 flex-shrink-0 stroke-muted-foreground',
             pathname === href &&
               'stroke-violet-500 lg:group-hover/link:stroke-violet-500',
           )}
@@ -75,9 +75,9 @@ export function SidebarItem({
         />
         <span
           className={cn(
-            'font-display text-muted-foreground leading-5 tracking-tight mt-2 sm:mt-0 sm:ml-6 lg:group-hover/link:text-foreground lg:group-hover/link:translate-x-2 lg:transistion-all duration-300 ease-in-out motion-reduce:transition-none motion-reduce:translate-x-0',
+            'font-display text-xs sm:text-base text-muted-foreground leading-5 tracking-tight mt-2 sm:mt-0 sm:ml-6 lg:group-hover/link:translate-x-2 lg:transistion-all duration-300 ease-in-out motion-reduce:transition-none motion-reduce:translate-x-0 motion-reduce:lg:group-hover/link:translate-x-0',
             pathname === href &&
-              'text-violet-500 sm:text-transparent sm:bg-clip-text sm:bg-gradient-to-br from-violet-500 to-pink-400 lg:group-hover/link:text-transparent',
+              'text-violet-500 sm:text-transparent sm:bg-clip-text sm:bg-gradient-to-br from-violet-500 to-pink-400 lg:group-hover/link:translate-x-0',
           )}
         >
           {children}
@@ -122,7 +122,7 @@ export default function Sidebar() {
           </ul>
           <ul
             className={cn(
-              'cursor-pointer flex justify-around sm:flex-col sm:gap-2 flex-1 sm:flex-none',
+              'cursor-pointer flex justify-around sm:flex-col sm:gap-2 sm:flex-none',
               `flex-[${navItemsBottom.length}]`,
             )}
           >

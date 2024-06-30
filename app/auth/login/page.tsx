@@ -129,7 +129,7 @@ export default function LogInPage() {
                 />
                 <Button disabled={loading} type="submit" className="w-full">
                   {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  Create an account
+                  Log In
                 </Button>
               </div>
               <div className="mt-4 text-center text-sm">
