@@ -43,6 +43,86 @@ const navItemsBottom = [
   },
 ];
 
+export function MobileItem({
+  href,
+  icon: Icon,
+  filled: Filled,
+  children,
+}: {
+  href: string;
+  icon: React.ComponentType<SVGProps<SVGSVGElement>>;
+  filled: React.ComponentType<SVGProps<SVGSVGElement>>;
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+
+  return (
+    <li>
+      <Link
+        href={href}
+        role="menuitem"
+        aria-current={pathname === href ? 'page' : undefined}
+        aria-label={`Navigate to ${children}`}
+        className="flex flex-col w-16 items-center group/link"
+      >
+        {pathname !== href ? (
+          <Icon
+            className="h-6 w-6 mx-1 stroke-muted-foreground"
+            strokeWidth={1.75}
+            aria-hidden="true"
+          />
+        ) : (
+          <Filled
+            className="h-6 w-6 mx-1 text-violet-500"
+            strokeWidth={1.75}
+            aria-hidden="true"
+          />
+        )}
+        <span
+          className={cn(
+            'font-display text-sm text-muted-foreground leading-5 tracking-tight mt-2',
+            pathname === href && 'text-violet-500',
+          )}
+        >
+          {children}
+        </span>
+      </Link>
+    </li>
+  );
+}
+
+export function MobileNavbar() {
+  return (
+    <nav
+      className="sm:hidden fixed bottom-0 w-full border-t border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-black"
+      aria-label="Main Navigation"
+    >
+      <ul className="cursor-pointer w-full flex justify-around gap-2 py-2">
+        {navItemsTop.map((item) => (
+          <MobileItem
+            key={item.name}
+            href={item.href}
+            icon={item.icon}
+            filled={item.filled}
+          >
+            {item.name}
+          </MobileItem>
+        ))}
+        {navItemsBottom.map((item) => (
+          <MobileItem
+            key={item.name}
+            href={item.href}
+            icon={item.icon}
+            filled={item.filled}
+          >
+            {item.name}
+          </MobileItem>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
 export function DesktopItem({
   href,
   icon: Icon,
@@ -142,5 +222,10 @@ export function DesktopNavbar() {
 }
 
 export default function Sidebar() {
-  return <DesktopNavbar />;
+  return (
+    <>
+      <MobileNavbar />
+      <DesktopNavbar />
+    </>
+  );
 }
