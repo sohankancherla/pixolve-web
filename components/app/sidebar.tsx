@@ -75,7 +75,7 @@ export function MobileItem({
         )}
         <span
           className={cn(
-            'font-display text-xs text-muted-foreground leading-5 tracking-tight mt-1',
+            'font-display text-xs text-muted-foreground leading-5 tracking-tight',
             pathname === href && 'text-violet-500',
           )}
         >
