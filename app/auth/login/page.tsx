@@ -8,8 +8,6 @@ import * as z from 'zod';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { login } from '@/app/auth/actions';
-
 import { Loader2 } from 'lucide-react';
 import Alert from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -56,7 +54,7 @@ export default function LogInPage() {
     formData.append('email', values.email);
     formData.append('password', values.password);
 
-    const error = await login(formData);
+    const error = 'change';
     setLoading(false);
     if (error) {
       setErrorAlert(error);

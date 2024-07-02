@@ -7,8 +7,6 @@ import * as z from 'zod';
 
 import Link from 'next/link';
 
-import { signup } from '@/app/auth/actions';
-
 import { Loader2 } from 'lucide-react';
 import Alert from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -70,28 +68,20 @@ export default function SignUpPage() {
     formData.append('email', values.email);
     formData.append('password', values.password);
 
-    try {
-      await signup(formData);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      if (error instanceof Error) {
-        if (error.message === 'User already registered') {
-          form.setError('email', {
-            type: 'manual',
-            message: 'This email is already in use',
-          });
-        } else if (error.message.includes('Password')) {
-          form.setError('password', {
-            type: 'manual',
-            message: error.message,
-          });
-        } else {
-          setErrorAlert(error.message);
-        }
-      } else {
-        setErrorAlert('An unexpected error occurred');
-      }
+    const error = 'This email is already in use';
+    setLoading(false);
+    if (error && error === 'This email is already in use') {
+      form.setError('email', {
+        type: 'manual',
+        message: error,
+      });
+    } else if (error && error.includes('Password')) {
+      form.setError('password', {
+        type: 'manual',
+        message: error,
+      });
+    } else {
+      setErrorAlert(error || 'An unexpected error occurred');
     }
   };
 
