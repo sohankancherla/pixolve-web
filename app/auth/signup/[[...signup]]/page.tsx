@@ -18,7 +18,6 @@ import {
 import Google from '@/components/icons/google';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import PasswordInput from '@/components/ui/password-input';
 import Spinner from '@/components/icons/spinner';
 
 import { cn } from '@/lib/utils';
@@ -67,7 +66,7 @@ export default function SignUpPage() {
                     </p>
                     <Clerk.Field name="emailAddress" className="space-y-2">
                       <Clerk.Label asChild>
-                        <Label>Email</Label>
+                        <Label>Email address</Label>
                       </Clerk.Label>
                       <Clerk.Input type="email" required asChild>
                         <Input />
@@ -78,8 +77,8 @@ export default function SignUpPage() {
                       <Clerk.Label asChild>
                         <Label>Password</Label>
                       </Clerk.Label>
-                      <Clerk.Input type="password" required asChild>
-                        <PasswordInput />
+                      <Clerk.Input type="text" required asChild>
+                        <Input />
                       </Clerk.Input>
                       <Clerk.FieldError className="block text-sm text-destructive" />
                     </Clerk.Field>
