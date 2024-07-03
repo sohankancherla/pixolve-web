@@ -5,7 +5,8 @@ import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import { ClerkProvider } from '@clerk/nextjs';
+import { ClerkProvider, ClerkLoaded, ClerkLoading } from '@clerk/nextjs';
+import { dark } from '@clerk/themes';
 
 import ThemeProvider from '@/components/theme-provider';
 
@@ -44,7 +45,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        layout: {
+          logoPlacement: 'none',
+        },
+        variables: {
+          colorPrimary: 'hsl(254, 67%, 58%)',
+          colorText: 'hsl(0, 0%, 18%)',
+        },
+      }}
+    >
       <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
@@ -65,7 +76,10 @@ export default function RootLayout({
                 <Analytics />
               </>
             )}
-            {children}
+            <ClerkLoading>
+              <div>Clerk is loading...</div>
+            </ClerkLoading>
+            <ClerkLoaded>{children}</ClerkLoaded>
           </ThemeProvider>
         </body>
       </html>
