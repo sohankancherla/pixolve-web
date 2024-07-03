@@ -5,8 +5,11 @@ import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import '@/styles/globals.css';
+import { ClerkProvider } from '@clerk/nextjs';
+
 import ThemeProvider from '@/components/theme-provider';
+
+import '@/styles/globals.css';
 
 import { cn } from '@/lib/utils';
 
@@ -41,29 +44,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          inter.variable,
-          poppins.variable,
-          'min-h-screen bg-background font-sans',
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {process.env.VERCEL_URL && (
-            <>
-              <SpeedInsights />
-              <Analytics />
-            </>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={cn(
+            inter.variable,
+            poppins.variable,
+            'min-h-screen bg-background font-sans',
           )}
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+        >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {process.env.VERCEL_URL && (
+              <>
+                <SpeedInsights />
+                <Analytics />
+              </>
+            )}
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

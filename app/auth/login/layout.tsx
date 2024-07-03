@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Image from 'next/image';
+
 export const metadata = {
   title: 'Login',
 };
@@ -18,6 +20,13 @@ export default function LoginLayout({
       </div>
       <div className="w-full max-w-5xl lg:flex p-10 z-10">
         <section className="flex flex-col justify-start items-center flex-1">
+          <Image
+            src="/logo-purple.png"
+            alt="Pixolve"
+            width="150"
+            height="27"
+            className="flex-shrink-0 mb-12"
+          />
           {children}
         </section>
       </div>

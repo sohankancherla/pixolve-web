@@ -28,7 +28,7 @@ const navItemsTop = [
   },
   {
     name: 'Organize',
-    href: '/app/find',
+    href: '/app/organize',
     icon: Folder,
     filled: FolderFilled,
   },
