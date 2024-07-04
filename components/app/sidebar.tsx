@@ -16,19 +16,19 @@ import { Square2Stack, Square2StackFilled } from '../icons/square-2-stack';
 const navItemsTop = [
   {
     name: 'Enhance',
-    href: '/app/enhance',
+    href: '/dashboard/enhance',
     icon: Sparkles,
     filled: SparklesFilled,
   },
   {
     name: 'Merge',
-    href: '/app/merge',
+    href: '/dashboard/merge',
     icon: Square2Stack,
     filled: Square2StackFilled,
   },
   {
     name: 'Organize',
-    href: '/app/organize',
+    href: '/dashboard/organize',
     icon: Folder,
     filled: FolderFilled,
   },
@@ -37,7 +37,7 @@ const navItemsTop = [
 const navItemsBottom = [
   {
     name: 'Profile',
-    href: '/app/profile',
+    href: '/dashboard/profile',
     icon: UserCircle,
     filled: UserCircleFilled,
   },
