@@ -1,9 +1,5 @@
-import React from 'react';
-
-export const metadata = {
-  title: 'Home',
-};
+import { redirect } from 'next/navigation';
 
 export default async function AppHomePage() {
-  return <h1>Home</h1>;
+  return redirect('/dashboard/enhance');
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { RedirectToSignIn, SignedIn, SignedOut } from '@clerk/nextjs';
+
 import Sidebar from '@/components/app/sidebar';
 
 export default async function AppLayout({
@@ -8,9 +10,16 @@ export default async function AppLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="sm:flex">
-      <Sidebar />
-      <main>{children}</main>
-    </div>
+    <>
+      <SignedIn>
+        <div className="sm:flex">
+          <Sidebar />
+          <main>{children}</main>
+        </div>
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+    </>
   );
 }
