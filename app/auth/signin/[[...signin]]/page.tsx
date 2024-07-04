@@ -51,6 +51,7 @@ export default function SignInPage() {
             header: {
               textAlign: 'left',
               fontSize: '1.25rem',
+              letterSpacing: '-0.025em',
             },
           },
         }}
