@@ -2,17 +2,17 @@
 
 import React from 'react';
 
-import { SignUp } from '@clerk/nextjs';
+import { SignIn } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 import { useTheme } from 'next-themes';
 
 import { lightTheme, darkTheme } from '@/lib/colors';
 
-export default function SignUpPage() {
+export default function SignInPage() {
   const { resolvedTheme } = useTheme();
 
   return (
-    <SignUp
+    <SignIn
       appearance={{
         baseTheme: resolvedTheme === 'dark' ? dark : undefined,
         layout: {
