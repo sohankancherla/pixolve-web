@@ -71,12 +71,12 @@ export function MobileItem({
             aria-hidden="true"
           />
         ) : (
-          <Filled className="h-6 w-6 mx-1 text-violet-500" aria-hidden="true" />
+          <Filled className="h-6 w-6 mx-1 text-primary" aria-hidden="true" />
         )}
         <span
           className={cn(
             'font-display text-xs text-muted-foreground leading-5 tracking-tight',
-            pathname === href && 'text-violet-500',
+            pathname === href && 'text-primary',
           )}
         >
           {children}
@@ -151,7 +151,7 @@ export function DesktopItem({
           />
         ) : (
           <Filled
-            className="h-6 w-6 mx-1 text-violet-500"
+            className="h-6 w-6 mx-1 text-primary"
             strokeWidth={1.75}
             aria-hidden="true"
           />
@@ -160,7 +160,7 @@ export function DesktopItem({
           className={cn(
             'font-display text-muted-foreground leading-5 tracking-tight ml-6 transistion-all duration-300 ease-in-out',
             pathname === href
-              ? 'text-violet-500'
+              ? 'text-primary'
               : 'group-hover/link:translate-x-2 motion-reduce:group-hover/link:translate-x-0',
           )}
         >
