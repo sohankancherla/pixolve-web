@@ -19,11 +19,11 @@ function ListItem({
     <li className="flex gap-4">
       <CircleCheckBig
         size={20}
-        className="flex-shrink-0 stroke-violet-500"
+        className="flex-shrink-0 stroke-primary"
         aria-hidden="true"
       />
       <div className="max-w-[360px]">
-        <h6 className="font-medium leading-5 tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-violet-500 to-pink-400 mb-2">
+        <h6 className="font-medium leading-5 tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-primary to-pink-400 mb-2">
           {heading}
         </h6>
         <p className="leading-6 tracking-tight">{paragraph}</p>

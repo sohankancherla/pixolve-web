@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Update lib/colors.ts on change */
 @layer base {
   :root {
     --background: 0, 0%, 100%;
@@ -32,7 +33,7 @@
     --input: 220 13% 91%;
     --ring: 254, 67%, 58%;
 
-    --radius: 0.6rem;
+    --radius: 0.5rem;
   }
 
   .dark {

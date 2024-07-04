@@ -2,17 +2,17 @@ import React from 'react';
 
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { ClerkProvider, ClerkLoaded, ClerkLoading } from '@clerk/nextjs';
-import { dark } from '@clerk/themes';
 
 import ThemeProvider from '@/components/theme-provider';
 
-import '@/styles/globals.css';
-
 import { cn } from '@/lib/utils';
+
+import '@/styles/globals.css';
 
 const inter = localFont({
   src: '../fonts/Inter-Variable.ttf',
@@ -45,17 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      appearance={{
-        layout: {
-          logoPlacement: 'none',
-        },
-        variables: {
-          colorPrimary: 'hsl(254, 67%, 58%)',
-          colorText: 'hsl(0, 0%, 18%)',
-        },
-      }}
-    >
+    <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
