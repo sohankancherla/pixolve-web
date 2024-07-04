@@ -174,7 +174,7 @@ export function DesktopItem({
 export function DesktopNavbar() {
   return (
     <nav
-      className="hidden sm:flex flex-col min-h-screen w-56 px-2 py-6 border-r border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-black"
+      className="hidden sm:flex flex-col min-h-screen min-w-56 px-2 py-6 border-r border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-black"
       aria-label="Main Navigation"
     >
       <Link href="/app" className="py-4 my-4" aria-label="Pixolve Home">

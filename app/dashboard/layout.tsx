@@ -12,9 +12,9 @@ export default async function AppLayout({
   return (
     <>
       <SignedIn>
-        <div className="sm:flex">
+        <div className="sm:flex h-full w-full">
           <Sidebar />
-          <main>{children}</main>
+          <main className="w-full">{children}</main>
         </div>
       </SignedIn>
       <SignedOut>
