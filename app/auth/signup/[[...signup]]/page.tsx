@@ -2,9 +2,10 @@
 
 import React from 'react';
 
+import { useTheme } from 'next-themes';
+
 import { SignUp } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
-import { useTheme } from 'next-themes';
 
 import { lightTheme, darkTheme } from '@/lib/colors';
 

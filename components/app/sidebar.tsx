@@ -61,11 +61,11 @@ export function MobileItem({
       <Link
         href={href}
         role="menuitem"
-        aria-current={pathname === href ? 'page' : undefined}
+        aria-current={pathname.includes(href) ? 'page' : undefined}
         aria-label={`Navigate to ${children}`}
         className="flex flex-col items-center group/link"
       >
-        {pathname !== href ? (
+        {!pathname.includes(href) ? (
           <Icon
             className="h-6 w-6 mx-1 stroke-muted-foreground"
             aria-hidden="true"
@@ -76,7 +76,7 @@ export function MobileItem({
         <span
           className={cn(
             'font-display text-xs text-muted-foreground leading-5 tracking-tight',
-            pathname === href && 'text-primary',
+            pathname.includes(href) && 'text-primary',
           )}
         >
           {children}
@@ -140,10 +140,10 @@ export function DesktopItem({
         aria-label={`Navigate to ${children}`}
         className={cn(
           'flex w-full items-center p-4 rounded-full group/link',
-          pathname === href ? 'bg-accent' : 'hover:bg-accent/50',
+          pathname.includes(href) ? 'bg-accent' : 'hover:bg-accent/50',
         )}
       >
-        {pathname !== href ? (
+        {!pathname.includes(href) ? (
           <Icon
             className="h-6 w-6 mx-1 stroke-muted-foreground"
             strokeWidth={1.75}
@@ -159,7 +159,7 @@ export function DesktopItem({
         <span
           className={cn(
             'font-display text-muted-foreground leading-5 tracking-tight ml-6 transistion-all duration-300 ease-in-out',
-            pathname === href
+            pathname.includes(href)
               ? 'text-primary'
               : 'group-hover/link:translate-x-2 motion-reduce:group-hover/link:translate-x-0',
           )}
