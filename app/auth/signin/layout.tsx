@@ -2,6 +2,10 @@ import React from 'react';
 
 import Image from 'next/image';
 
+import { ClerkLoaded, ClerkLoading } from '@clerk/nextjs';
+
+import Spinner from '@/components/icons/spinner';
+
 export const metadata = {
   title: 'Login',
 };
@@ -19,16 +23,23 @@ export default function LoginLayout({
         <div className="absolute top-1/4 right-0 w-[150px] h-[150px] bg-gradient-to-r from-yellow-400 to-orange-500 opacity-30 rounded-full filter blur-lg" />
       </div>
       <div className="w-full max-w-5xl lg:flex p-10 z-10">
-        <section className="flex flex-col justify-start items-center flex-1">
-          <Image
-            src="/logo-purple.png"
-            alt="Pixolve"
-            width="150"
-            height="27"
-            className="flex-shrink-0 mb-12"
-          />
-          {children}
-        </section>
+        <ClerkLoading>
+          <div className="h-full w-full flex items-center justify-center">
+            <Spinner className="size-10 stroke-primary animate-spin " />
+          </div>
+        </ClerkLoading>
+        <ClerkLoaded>
+          <section className="flex flex-col justify-start items-center flex-1">
+            <Image
+              src="/logo-purple.png"
+              alt="Pixolve"
+              width="150"
+              height="27"
+              className="flex-shrink-0 mb-12"
+            />
+            {children}
+          </section>
+        </ClerkLoaded>
       </div>
     </main>
   );

@@ -6,7 +6,7 @@ import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import { ClerkProvider, ClerkLoaded, ClerkLoading } from '@clerk/nextjs';
+import { ClerkProvider } from '@clerk/nextjs';
 
 import ThemeProvider from '@/components/theme-provider';
 
@@ -66,10 +66,7 @@ export default function RootLayout({
                 <Analytics />
               </>
             )}
-            <ClerkLoading>
-              <div>Clerk is loading...</div>
-            </ClerkLoading>
-            <ClerkLoaded>{children}</ClerkLoaded>
+            {children}
           </ThemeProvider>
         </body>
       </html>

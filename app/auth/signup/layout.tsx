@@ -2,6 +2,10 @@ import React from 'react';
 
 import Image from 'next/image';
 
+import { ClerkLoaded, ClerkLoading } from '@clerk/nextjs';
+
+import Spinner from '@/components/icons/spinner';
+
 import { CircleCheckBig } from 'lucide-react';
 
 export const metadata = {
@@ -45,36 +49,43 @@ export default function SignupLayout({
         <div className="absolute top-1/4 right-0 w-[150px] h-[150px] bg-gradient-to-r from-yellow-400 to-orange-500 opacity-30 rounded-full filter blur-lg" />
       </div>
       <div className="w-full max-w-5xl lg:flex p-10 z-10">
-        <section className="font-display text-muted-foreground flex-1 flex flex-col items-center lg:items-start">
-          <Image
-            src="/logo-purple.png"
-            alt="Pixolve"
-            width="150"
-            height="27"
-            className="flex-shrink-0 mb-12"
-          />
-          <ul className="hidden lg:flex flex-col gap-6">
-            <ListItem
-              heading="Enhance Your Images Instantly"
-              paragraph="Improve the quality of your images with the magical powers of AI"
+        <ClerkLoading>
+          <div className="h-full w-full flex items-center justify-center">
+            <Spinner className="size-10 stroke-primary animate-spin " />
+          </div>
+        </ClerkLoading>
+        <ClerkLoaded>
+          <section className="font-display text-muted-foreground flex-1 flex flex-col items-center lg:items-start">
+            <Image
+              src="/logo-purple.png"
+              alt="Pixolve"
+              width="150"
+              height="27"
+              className="flex-shrink-0 mb-12"
             />
-            <ListItem
-              heading="Perfect Group Shots"
-              paragraph="Merge the best faces from a series of photos to create the perfect group shot"
-            />
-            <ListItem
-              heading="Eliminate Duplicates"
-              paragraph="Keep your photo library clean and organized with best picture detection"
-            />
-            <ListItem
-              heading="100% Privacy"
-              paragraph="Your photos are yours and yours alone. We never store your images"
-            />
-          </ul>
-        </section>
-        <section className="flex flex-col justify-start items-center flex-1">
-          {children}
-        </section>
+            <ul className="hidden lg:flex flex-col gap-6">
+              <ListItem
+                heading="Enhance Your Images Instantly"
+                paragraph="Improve the quality of your images with the magical powers of AI"
+              />
+              <ListItem
+                heading="Perfect Group Shots"
+                paragraph="Merge the best faces from a series of photos to create the perfect group shot"
+              />
+              <ListItem
+                heading="Eliminate Duplicates"
+                paragraph="Keep your photo library clean and organized with best picture detection"
+              />
+              <ListItem
+                heading="100% Privacy"
+                paragraph="Your photos are yours and yours alone. We never store your images"
+              />
+            </ul>
+          </section>
+          <section className="flex flex-col justify-start items-center flex-1">
+            {children}
+          </section>
+        </ClerkLoaded>
       </div>
     </main>
   );
