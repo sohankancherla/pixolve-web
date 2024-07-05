@@ -51,7 +51,7 @@ export default function RootLayout({
           className={cn(
             inter.variable,
             poppins.variable,
-            'min-h-screen min-w-screen bg-background font-sans',
+            'bg-background font-sans',
           )}
         >
           <ThemeProvider

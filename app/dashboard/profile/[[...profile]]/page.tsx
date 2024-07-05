@@ -43,7 +43,7 @@ export default function ProfilePage() {
         },
         elements: {
           rootBox: 'h-full w-full',
-          cardBox: 'h-full min-w-full shadow-none rounded-none',
+          cardBox: 'h-full min-w-full sm:w-full shadow-none rounded-none',
           navbar: 'pt-12 pb-4 pl-4 pr-3',
           header: 'mt-7 text-xl tracking-tight',
         },
