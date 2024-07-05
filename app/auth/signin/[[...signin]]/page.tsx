@@ -44,15 +44,8 @@ export default function SignInPage() {
             borderRadius: lightTheme.radius,
           },
           elements: {
-            cardBox: {
-              boxShadow: 'none',
-              border: `1px solid ${resolvedTheme === 'dark' ? darkTheme.border : lightTheme.border}`,
-            },
-            header: {
-              textAlign: 'left',
-              fontSize: '1.25rem',
-              letterSpacing: '-0.025em',
-            },
+            cardBox: `border border-${resolvedTheme === 'dark' ? 'dark' : 'light'}`,
+            header: 'text-left text-xl tracking-tight',
           },
         }}
       />
