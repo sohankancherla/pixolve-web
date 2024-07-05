@@ -89,7 +89,7 @@ export function MobileItem({
 export function MobileNavbar() {
   return (
     <nav
-      className="sm:hidden fixed bottom-0 w-full border-t border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-black"
+      className="sm:hidden w-full border-t border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-black"
       aria-label="Main Navigation"
     >
       <ul className="cursor-pointer w-full flex py-2">
