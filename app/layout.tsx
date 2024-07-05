@@ -51,7 +51,7 @@ export default function RootLayout({
           className={cn(
             inter.variable,
             poppins.variable,
-            'h-screen w-screen overflow-auto bg-background font-sans',
+            'min-h-screen min-w-screen bg-background font-sans',
           )}
         >
           <ThemeProvider
