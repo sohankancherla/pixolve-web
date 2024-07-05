@@ -12,7 +12,7 @@ export default async function AppLayout({
   return (
     <>
       <SignedIn>
-        <div className="flex flex-col-reverse sm:flex-row h-screen w-full overflow-auto">
+        <div className="sm:flex h-screen w-full overflow-auto">
           <Sidebar />
           <main className="h-full w-full">{children}</main>
         </div>

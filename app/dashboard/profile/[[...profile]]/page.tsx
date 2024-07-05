@@ -42,7 +42,7 @@ export default function ProfilePage() {
           borderRadius: lightTheme.radius,
         },
         elements: {
-          rootBox: 'h-full w-full',
+          rootBox: 'h-[calc(100%-61px)] sm:h-full w-full',
           cardBox: 'h-full min-w-full shadow-none rounded-none',
           navbar: 'pt-12 pb-4 pl-4 pr-3',
           header: 'mt-7 text-xl tracking-tight',
