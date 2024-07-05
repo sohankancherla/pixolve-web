@@ -17,9 +17,6 @@ export default function ProfilePage() {
       path="/dashboard/profile"
       appearance={{
         baseTheme: resolvedTheme === 'dark' ? dark : undefined,
-        layout: {
-          logoPlacement: 'none',
-        },
         variables: {
           colorPrimary:
             resolvedTheme === 'dark' ? darkTheme.primary : lightTheme.primary,
@@ -45,20 +42,10 @@ export default function ProfilePage() {
           borderRadius: lightTheme.radius,
         },
         elements: {
-          cardBox: {
-            boxShadow: 'none',
-            borderRadius: '0rem',
-            minHeight: '100vh',
-            minWidth: 'calc(100vw - 14rem)',
-          },
-          navbar: {
-            padding: '48px 20px 16px 12px',
-          },
-          header: {
-            marginTop: '24px',
-            fontSize: '1.25rem',
-            letterSpacing: '-0.025em',
-          },
+          rootBox: 'h-full w-full overflow-auto',
+          cardBox: 'h-full min-w-full shadow-none rounded-none',
+          navbar: 'pt-12 pb-4 pl-4 pr-3',
+          header: 'mt-7 text-xl tracking-tight',
         },
       }}
     />
