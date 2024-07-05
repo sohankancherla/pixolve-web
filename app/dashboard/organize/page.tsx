@@ -1,9 +1,9 @@
 import React from 'react';
 
 export const metadata = {
-  title: 'Find',
+  title: 'Organize',
 };
 
-export default function FindPage() {
-  return <h1>Find</h1>;
+export default function OrganizePage() {
+  return <h1>Organize</h1>;
 }
