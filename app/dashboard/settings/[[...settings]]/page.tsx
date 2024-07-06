@@ -14,7 +14,8 @@ export default function ProfilePage() {
 
   return (
     <UserProfile
-      path="/dashboard/profile"
+      path="/dashboard/settings"
+      routing="path"
       appearance={{
         baseTheme: resolvedTheme === 'dark' ? dark : undefined,
         variables: {
@@ -44,8 +45,8 @@ export default function ProfilePage() {
         elements: {
           rootBox: 'h-full w-full',
           cardBox: 'h-full min-w-full sm:w-full shadow-none rounded-none',
-          navbar: 'pt-12 pb-4 pl-4 pr-3',
-          header: 'mt-7 text-xl tracking-tight',
+          navbar: 'sm:pt-12 sm:pb-12 sm:pl-4 sm:pr-3',
+          header: 'sm:mt-7 text-xl tracking-tight',
         },
       }}
     />

@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
 
-import { UserCircle, UserCircleFilled } from '../icons/user-circle';
+import { Gear, GearFilled } from '../icons/gear';
 import { Folder, FolderFilled } from '../icons/folder';
 import { Sparkles, SparklesFilled } from '../icons/sparkles';
 import { Square2Stack, Square2StackFilled } from '../icons/square-2-stack';
@@ -36,10 +36,10 @@ const navItemsTop = [
 
 const navItemsBottom = [
   {
-    name: 'Profile',
-    href: '/dashboard/profile',
-    icon: UserCircle,
-    filled: UserCircleFilled,
+    name: 'Settings',
+    href: '/dashboard/settings',
+    icon: Gear,
+    filled: GearFilled,
   },
 ];
 
