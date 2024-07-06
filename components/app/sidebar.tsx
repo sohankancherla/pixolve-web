@@ -68,10 +68,15 @@ export function MobileItem({
         {!pathname.includes(href) ? (
           <Icon
             className="h-6 w-6 mx-1 stroke-muted-foreground"
+            strokeWidth={1.75}
             aria-hidden="true"
           />
         ) : (
-          <Filled className="h-6 w-6 mx-1 text-primary" aria-hidden="true" />
+          <Filled
+            className="h-6 w-6 mx-1 text-primary"
+            strokeWidth={1.75}
+            aria-hidden="true"
+          />
         )}
         <span
           className={cn(
