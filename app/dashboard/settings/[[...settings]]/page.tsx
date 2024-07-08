@@ -7,6 +7,8 @@ import { useTheme } from 'next-themes';
 import { UserProfile } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 
+import { GearFilled } from '@/components/icons/gear';
+
 import { lightTheme, darkTheme } from '@/lib/colors';
 
 export default function ProfilePage() {
@@ -46,9 +48,23 @@ export default function ProfilePage() {
           rootBox: 'h-full w-full',
           cardBox: 'h-full min-w-full sm:w-full shadow-none rounded-none',
           navbar: 'sm:pt-12 sm:pb-12 sm:pl-4 sm:pr-3',
-          header: 'sm:mt-7 text-xl tracking-tight',
+          header: 'sm:mt-7',
         },
       }}
-    />
+    >
+      <UserProfile.Page
+        label="Settings"
+        labelIcon={<GearFilled />}
+        url="/dashboard/settings/settings"
+      >
+        <h1 className="clerk-h1 sm:mt-7 ">Settings</h1>
+        <div className="clerk-section">
+          <p className="clerk-section-title">Appearance</p>
+          <div className="clerk-section-content">
+            <p>Dark Mode</p>
+          </div>
+        </div>
+      </UserProfile.Page>
+    </UserProfile>
   );
 }
