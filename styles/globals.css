@@ -34,6 +34,7 @@
     --ring: 254, 67%, 58%;
 
     --clerk-border: rgba(0, 0, 0, 0.07);
+    --alpha: hsla(0, 0%, 0%, 0.03);
 
     --radius: 0.5rem;
   }
@@ -68,6 +69,7 @@
     --ring: 254, 67%, 58%;
 
     --clerk-border: rgba(255, 255, 255, 0.07);
+    --alpha: hsla(0, 0%, 100%, 0.03);
   }
 }
 
@@ -174,7 +176,6 @@
   --accentHover: hsla(254, 67%, 68%, 1);
   --border: hsla(254, 67%, 58%, 1);
   --accentContrast: hsla(0, 0%, 95%, 1);
-  --alpha: hsla(0, 0%, 100%, 0.03);
   white-space: nowrap;
   -webkit-box-pack: start;
   justify-content: start;
