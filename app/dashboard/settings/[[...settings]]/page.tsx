@@ -7,6 +7,7 @@ import { useTheme } from 'next-themes';
 import { UserProfile } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 
+import { Button } from '@/components/ui/button';
 import { GearFilled } from '@/components/icons/gear';
 import ModeToggle from '@/components/mode-toggle';
 
@@ -63,6 +64,14 @@ export default function ProfilePage() {
           <p className="clerk-section-title">Appearance</p>
           <div className="clerk-section-content">
             <ModeToggle />
+          </div>
+        </div>
+        <div className="clerk-section">
+          <p className="clerk-section-title">Support</p>
+          <div className="clerk-section-content">
+            <button type="button" className="clerk-button">
+              Contact support
+            </button>
           </div>
         </div>
       </UserProfile.Page>
