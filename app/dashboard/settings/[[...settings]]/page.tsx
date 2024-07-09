@@ -8,6 +8,7 @@ import { UserProfile } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 
 import { GearFilled } from '@/components/icons/gear';
+import ModeToggle from '@/components/mode-toggle';
 
 import { lightTheme, darkTheme } from '@/lib/colors';
 
@@ -55,13 +56,13 @@ export default function ProfilePage() {
       <UserProfile.Page
         label="Settings"
         labelIcon={<GearFilled />}
-        url="/dashboard/settings/settings"
+        url="/settings"
       >
         <h1 className="clerk-h1 sm:mt-7 ">Settings</h1>
         <div className="clerk-section">
           <p className="clerk-section-title">Appearance</p>
           <div className="clerk-section-content">
-            <p>Dark Mode</p>
+            <ModeToggle />
           </div>
         </div>
       </UserProfile.Page>

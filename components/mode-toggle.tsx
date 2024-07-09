@@ -1,40 +1,73 @@
 'use client';
 
 import * as React from 'react';
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
+
 import { useTheme } from 'next-themes';
 
-import { Button } from '@/components/ui/button';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+  ComputerDesktopIcon,
+  MoonIcon,
+  SunIcon,
+} from '@heroicons/react/24/outline';
+
+import { Button } from '@/components/ui/button';
+
+import { cn } from '@/lib/utils';
+
+const modes = [
+  {
+    name: 'Light',
+    icon: SunIcon,
+  },
+  {
+    name: 'Dark',
+    icon: MoonIcon,
+  },
+  {
+    name: 'System',
+    icon: ComputerDesktopIcon,
+  },
+];
 
 export default function ModeToggle() {
-  const { setTheme } = useTheme();
+  const { setTheme, theme } = useTheme();
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className="grid grid-cols-3 gap-x-5 gap-y-2 text-center text-muted-foreground">
+      {modes.map((mode) => {
+        const Icon = mode.icon;
+
+        return (
+          <Button
+            key={mode.name}
+            variant="outline"
+            className={cn(
+              'h-16 w-16 group/button',
+              theme === mode.name.toLowerCase()
+                ? 'bg-accent'
+                : 'hover:bg-accent/50',
+            )}
+            onClick={() => setTheme(mode.name.toLowerCase())}
+          >
+            <Icon
+              className={cn(
+                'h-6 w-6',
+                theme === mode.name.toLowerCase()
+                  ? 'stroke-primary'
+                  : 'stroke-muted-foreground sm:group-hover/button:-translate-y-1 sm:transistion-all sm:duration-300 ease-in-out sm:motion-reduce:group-hover/button:translate-x-0',
+              )}
+            />
+          </Button>
+        );
+      })}
+      {modes.map((mode) => (
+        <p
+          key={mode.name}
+          className={cn(theme === mode.name.toLowerCase() && 'text-primary')}
+        >
+          {mode.name}
+        </p>
+      ))}
+    </div>
   );
 }
