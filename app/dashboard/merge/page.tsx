@@ -1,6 +1,6 @@
 import React from 'react';
 
-import UserButton from '@/components/app/user-button';
+import UserButton from '@/components/dashboard/user-button';
 
 export const metadata = {
   title: 'Merge',

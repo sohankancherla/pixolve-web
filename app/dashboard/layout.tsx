@@ -2,7 +2,7 @@ import React from 'react';
 
 import { RedirectToSignIn, SignedIn, SignedOut } from '@clerk/nextjs';
 
-import Sidebar from '@/components/app/sidebar';
+import Sidebar from '@/components/dashboard/sidebar';
 
 export default async function AppLayout({
   children,

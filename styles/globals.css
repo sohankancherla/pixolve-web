@@ -187,3 +187,12 @@
   background-color: var(--alpha);
   color: var(--accentHover);
 }
+
+.clerk-button:focus {
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 0px 0px 4px;
+  transition-property: background-color, background, border-color, color, fill,
+    stroke, opacity, box-shadow, transform;
+  transition-timing-function: ease;
+  transition-duration: 200ms;
+}

@@ -2,12 +2,12 @@
 
 import React from 'react';
 
+import Link from 'next/link';
 import { useTheme } from 'next-themes';
 
 import { UserProfile } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 
-import { Button } from '@/components/ui/button';
 import { GearFilled } from '@/components/icons/gear';
 import ModeToggle from '@/components/mode-toggle';
 
@@ -69,9 +69,9 @@ export default function ProfilePage() {
         <div className="clerk-section">
           <p className="clerk-section-title">Support</p>
           <div className="clerk-section-content">
-            <button type="button" className="clerk-button">
+            <Link href="mailto:support@pixolve.app" className="clerk-button">
               Contact support
-            </button>
+            </Link>
           </div>
         </div>
       </UserProfile.Page>
