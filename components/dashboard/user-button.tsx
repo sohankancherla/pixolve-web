@@ -14,8 +14,6 @@ export default function UserButton() {
 
   return (
     <UserButtonClerk
-      userProfileMode="navigation"
-      userProfileUrl="/account"
       appearance={{
         baseTheme: resolvedTheme === 'dark' ? dark : undefined,
         variables: {
@@ -41,6 +39,35 @@ export default function UserButton() {
             resolvedTheme === 'dark' ? darkTheme.card : lightTheme.card,
           fontSize: '14px',
           borderRadius: lightTheme.radius,
+        },
+      }}
+      userProfileProps={{
+        appearance: {
+          baseTheme: resolvedTheme === 'dark' ? dark : undefined,
+          variables: {
+            colorPrimary:
+              resolvedTheme === 'dark' ? darkTheme.primary : lightTheme.primary,
+            colorDanger:
+              resolvedTheme === 'dark'
+                ? darkTheme.destructive
+                : lightTheme.destructive,
+            colorText:
+              resolvedTheme === 'dark'
+                ? darkTheme.cardForeground
+                : lightTheme.cardForeground,
+            colorTextOnPrimaryBackground:
+              resolvedTheme === 'dark'
+                ? darkTheme.primaryForeground
+                : lightTheme.primaryForeground,
+            colorTextSecondary:
+              resolvedTheme === 'dark'
+                ? darkTheme.mutedForeground
+                : lightTheme.mutedForeground,
+            colorBackground:
+              resolvedTheme === 'dark' ? darkTheme.card : lightTheme.card,
+            fontSize: '14px',
+            borderRadius: lightTheme.radius,
+          },
         },
       }}
     />
