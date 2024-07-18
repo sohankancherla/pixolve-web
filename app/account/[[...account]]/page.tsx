@@ -2,14 +2,10 @@
 
 import React from 'react';
 
-import Link from 'next/link';
 import { useTheme } from 'next-themes';
 
 import { UserProfile } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
-
-import { GearFilled } from '@/components/icons/gear';
-import ModeToggle from '@/components/mode-toggle';
 
 import { lightTheme, darkTheme } from '@/lib/colors';
 
@@ -18,7 +14,7 @@ export default function ProfilePage() {
 
   return (
     <UserProfile
-      path="/dashboard/settings"
+      path="/account"
       routing="path"
       appearance={{
         baseTheme: resolvedTheme === 'dark' ? dark : undefined,
@@ -53,28 +49,6 @@ export default function ProfilePage() {
           header: 'sm:mt-7',
         },
       }}
-    >
-      <UserProfile.Page
-        label="Settings"
-        labelIcon={<GearFilled />}
-        url="/settings"
-      >
-        <h1 className="clerk-h1 sm:mt-7 ">Settings</h1>
-        <div className="clerk-section">
-          <p className="clerk-section-title">Appearance</p>
-          <div className="clerk-section-content">
-            <ModeToggle />
-          </div>
-        </div>
-        <div className="clerk-section">
-          <p className="clerk-section-title">Support</p>
-          <div className="clerk-section-content">
-            <Link href="mailto:support@pixolve.app" className="clerk-button">
-              Contact support
-            </Link>
-          </div>
-        </div>
-      </UserProfile.Page>
-    </UserProfile>
+    />
   );
 }

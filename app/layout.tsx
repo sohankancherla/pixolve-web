@@ -8,7 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { ClerkProvider } from '@clerk/nextjs';
 
-import ThemeProvider from '@/components/theme-provider';
+import ThemeProvider from '@/components/ui/theme-provider';
 
 import { cn } from '@/lib/utils';
 

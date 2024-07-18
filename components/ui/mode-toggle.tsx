@@ -42,7 +42,7 @@ export default function ModeToggle() {
             key={mode.name}
             variant="outline"
             className={cn(
-              'h-16 w-16 group/button',
+              'h-12 w-12  sm:h-16 sm:w-16 group/button',
               theme === mode.name.toLowerCase()
                 ? 'bg-accent'
                 : 'hover:bg-accent/50',
@@ -51,7 +51,7 @@ export default function ModeToggle() {
           >
             <Icon
               className={cn(
-                'h-6 w-6',
+                'h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0',
                 theme === mode.name.toLowerCase()
                   ? 'stroke-primary'
                   : 'stroke-muted-foreground sm:group-hover/button:-translate-y-1 sm:transistion-all sm:duration-300 ease-in-out sm:motion-reduce:group-hover/button:translate-x-0',

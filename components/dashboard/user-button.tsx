@@ -15,7 +15,7 @@ export default function UserButton() {
   return (
     <UserButtonClerk
       userProfileMode="navigation"
-      userProfileUrl="/dashboard/settings"
+      userProfileUrl="/account"
       appearance={{
         baseTheme: resolvedTheme === 'dark' ? dark : undefined,
         variables: {
