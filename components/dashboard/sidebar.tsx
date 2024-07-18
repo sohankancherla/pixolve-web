@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 import { Gear, GearFilled } from '../icons/gear';
-import { Folder, FolderFilled } from '../icons/folder';
+import { Star, StarFilled } from '../icons/star';
 import { Sparkles, SparklesFilled } from '../icons/sparkles';
 import { Square2Stack, Square2StackFilled } from '../icons/square-2-stack';
 
@@ -27,10 +27,10 @@ const navItemsTop = [
     filled: Square2StackFilled,
   },
   {
-    name: 'Organize',
-    href: '/dashboard/organize',
-    icon: Folder,
-    filled: FolderFilled,
+    name: 'Score',
+    href: '/dashboard/score',
+    icon: Star,
+    filled: StarFilled,
   },
 ];
 
