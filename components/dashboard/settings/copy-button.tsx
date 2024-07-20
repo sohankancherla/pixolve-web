@@ -16,6 +16,7 @@ export default function CopyButton() {
         navigator.clipboard.writeText('support@pixolve.app');
         toast({
           description: 'Copied to clipboard.',
+          duration: 1000,
         });
       }}
     >
