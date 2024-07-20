@@ -37,7 +37,9 @@ export default function ModeToggle() {
           </Button>
         ))}
         {modes.map((mode) => (
-          <p key={mode.name}>{mode.name}</p>
+          <p className="text-xs sm:text-sm" key={mode.name}>
+            {mode.name}
+          </p>
         ))}
       </div>
     );
@@ -73,7 +75,10 @@ export default function ModeToggle() {
       {modes.map((mode) => (
         <p
           key={mode.name}
-          className={cn(theme === mode.name.toLowerCase() && 'text-primary')}
+          className={cn(
+            theme === mode.name.toLowerCase() && 'text-primary',
+            'text-xs sm:text-sm',
+          )}
         >
           {mode.name}
         </p>
