@@ -8,6 +8,7 @@ import {
   SunIcon,
 } from '@heroicons/react/24/outline';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 
 const modes = [
@@ -27,20 +28,12 @@ export default function ModeToggle() {
   if (!mounted) {
     return (
       <div className="grid grid-cols-3 gap-x-5 gap-y-2 text-center text-muted-foreground w-fit">
-        {modes.map((mode) => (
-          <Button
-            key={mode.name}
-            variant="outline"
-            className="h-12 w-12 sm:h-16 sm:w-16 group/button"
-          >
-            <mode.icon className="h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0" />
-          </Button>
-        ))}
-        {modes.map((mode) => (
-          <p className="text-xs sm:text-sm" key={mode.name}>
-            {mode.name}
-          </p>
-        ))}
+        <Skeleton className="h-12 w-12 sm:h-16 sm:w-16" />
+        <Skeleton className="h-12 w-12 sm:h-16 sm:w-16" />
+        <Skeleton className="h-12 w-12 sm:h-16 sm:w-16" />
+        <Skeleton className="h-12 w-12 sm:h-4 sm:w-16" />
+        <Skeleton className="h-12 w-12 sm:h-4 sm:w-16" />
+        <Skeleton className="h-12 w-12 sm:h-4 sm:w-16" />
       </div>
     );
   }
