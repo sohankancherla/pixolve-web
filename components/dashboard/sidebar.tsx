@@ -9,14 +9,13 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 import { Gear, GearFilled } from '../icons/gear';
-import { Star, StarFilled } from '../icons/star';
 import { Sparkles, SparklesFilled } from '../icons/sparkles';
 import { Square2Stack, Square2StackFilled } from '../icons/square-2-stack';
 
 const navItemsTop = [
   {
-    name: 'Enhance',
-    href: '/dashboard/enhance',
+    name: 'Clean',
+    href: '/dashboard/clean',
     icon: Sparkles,
     filled: SparklesFilled,
   },
@@ -25,12 +24,6 @@ const navItemsTop = [
     href: '/dashboard/merge',
     icon: Square2Stack,
     filled: Square2StackFilled,
-  },
-  {
-    name: 'Score',
-    href: '/dashboard/score',
-    icon: Star,
-    filled: StarFilled,
   },
 ];
 
@@ -182,7 +175,7 @@ export function DesktopNavbar() {
       className="hidden sm:flex flex-col min-h-screen min-w-56 px-2 py-6 border-r border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-black"
       aria-label="Main Navigation"
     >
-      <Link href="/app" className="py-4 my-4" aria-label="Pixolve Home">
+      <Link href="/dashboard" className="py-4 my-4" aria-label="Pixolve Home">
         <Image
           src="/logo-purple.png"
           alt="Pixolve"
