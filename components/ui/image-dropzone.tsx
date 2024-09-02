@@ -6,6 +6,14 @@ import Image from 'next/image';
 import { ArrowUpTrayIcon, MinusIcon } from '@heroicons/react/24/outline';
 import { Button } from './button';
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -16,6 +24,7 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
@@ -89,7 +98,6 @@ export default function ImageDropzone() {
 
   const handleClick = async () => {
     setIsLoading(true);
-    console.log(files);
     const zip = new JSZip();
 
     Array.from(files.values()).forEach((fileItem) => {
@@ -126,7 +134,7 @@ export default function ImageDropzone() {
           src={url}
           alt={file.name}
           fill
-          className="rounded-md object-cover"
+          className="rounded-md object-cover border"
         />
         <button
           onClick={() => removeFile(name)}
@@ -182,17 +190,19 @@ export default function ImageDropzone() {
           }}
         >
           <DialogHeader>
-            <DialogTitle className="text-2xl">Results</DialogTitle>
+            <DialogTitle className="text-2xl self-start">Results</DialogTitle>
             <DialogDescription className="sr-only">
               These are the results, select your threshold and download
             </DialogDescription>
           </DialogHeader>
           <Carousel>
-            <CarouselContent>
+            <CarouselContent className="w-[calc(85vw-34px)] max-w-[478px]">
               {Object.entries(data).map(([id, cluster]) => (
-                <CarouselItem key={id}>
-                  <h3 className="text-xl font-medium">Cluster</h3>
-                  <div className="h-96 overflow-y-auto grid grid-cols-2 gap-4">
+                <CarouselItem className="w-fit" key={id}>
+                  <h3 className="text-lg font-medium mb-2">
+                    {id === '-1' ? 'Ungrouped' : 'Group ' + (Number(id) + 1)}
+                  </h3>
+                  <div className="h-[50vh] min-h-96 overflow-y-auto grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
                     {Object.entries(cluster as Cluster).map(
                       ([imagePath, count]) => {
                         const imageName = imagePath.split('/').pop();
@@ -200,15 +210,19 @@ export default function ImageDropzone() {
                         const imageUrl = fileItem ? fileItem.url : '';
 
                         return (
-                          <div className="relative w-full h-52">
-                            <Image
-                              key={imagePath}
-                              src={imageUrl}
-                              alt={imageName!}
-                              fill
-                              className="rounded-md object-cover"
-                            />
-                          </div>
+                          <Card key={imageName} className="w-full h-fit">
+                            <CardContent className="p-0 gap-2">
+                              <img
+                                key={imagePath}
+                                src={imageUrl}
+                                alt={imageName!}
+                                className="rounded-md h-52 w-full object-cover"
+                              />
+                            </CardContent>
+                            <CardFooter className="p-0">
+                              <span className="m-4 text-base font-medium text-muted-foreground">{`Score: ${count}`}</span>
+                            </CardFooter>
+                          </Card>
                         );
                       },
                     )}
@@ -219,6 +233,7 @@ export default function ImageDropzone() {
             <CarouselPrevious className="h-8 w-8" />
             <CarouselNext />
           </Carousel>
+          <Button>Download</Button>
         </DialogContent>
       </Dialog>
 
