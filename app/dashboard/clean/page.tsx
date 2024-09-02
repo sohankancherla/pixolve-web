@@ -1,13 +1,16 @@
 import React from 'react';
 
+import ImageDropzone from '@/components/ui/image-dropzone';
+
 export const metadata = {
-  title: 'Score',
+  title: 'Clean',
 };
 
 export default function ScorePage() {
   return (
-    <div className="w-full flex justify-between items-center p-6 sm:p-10">
-      <h1 className="text-4xl font-medium">Score</h1>
+    <div className="h-full flex flex-col">
+      <h1 className="text-4xl font-medium mb-12">Clean</h1>
+      <ImageDropzone />
     </div>
   );
 }

@@ -1,18 +1,11 @@
 'use client';
 
-import React, { useCallback, useState, useMemo, useRef } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import { useDropzone } from 'react-dropzone';
 import Image from 'next/image';
 import { ArrowUpTrayIcon, MinusIcon } from '@heroicons/react/24/outline';
 import { Button } from './button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import {
   Carousel,
   CarouselContent,
@@ -24,10 +17,16 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import JSZip from 'jszip';
 import axios from 'axios';
 import { useAuth } from '@clerk/nextjs';
@@ -50,8 +49,15 @@ export default function ImageDropzone() {
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [data, setData] = useState<Clusters>({});
+  const [threshold, setThreshold] = useState('7');
   const [files, setFiles] = useState<Map<string, FileItem>>(new Map());
+  const [currentPage, setCurrentPage] = useState(0);
+  const [buttonLoading, setButtonLoading] = useState(false);
   const { getToken } = useAuth();
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
@@ -116,7 +122,6 @@ export default function ImageDropzone() {
         },
       })
       .then((response) => {
-        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
         setOpen(true);
@@ -125,6 +130,47 @@ export default function ImageDropzone() {
         console.log(error);
         setIsLoading(false);
       });
+  };
+
+  const handleDownload = async () => {
+    setButtonLoading(true);
+    try {
+      const zip = new JSZip();
+
+      if (currentPage === Object.keys(data).length - 1) {
+        const currentCluster = data[-1];
+        Object.keys(currentCluster).forEach((imagePath) => {
+          const imageName = imagePath.split('/').pop();
+          const fileItem = files.get(imageName!);
+          if (fileItem) {
+            zip.file(imageName!, fileItem.file);
+          }
+        });
+      } else {
+        const currentCluster = data[currentPage];
+        Object.entries(currentCluster).forEach(([imagePath, score]) => {
+          if (score >= parseInt(threshold)) {
+            const imageName = imagePath.split('/').pop();
+            const fileItem = files.get(imageName!);
+            if (fileItem) {
+              zip.file(imageName!, fileItem.file);
+            }
+          }
+        });
+      }
+
+      const content = await zip.generateAsync({ type: 'blob' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(content);
+      link.download = `group_${currentPage === Object.keys(data).length - 1 ? 'ungrouped' : currentPage + 1}.zip`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Error downloading images:', error);
+    } finally {
+      setButtonLoading(false);
+    }
   };
 
   const fileItems = useMemo(() => {
@@ -195,13 +241,40 @@ export default function ImageDropzone() {
               These are the results, select your threshold and download
             </DialogDescription>
           </DialogHeader>
-          <Carousel>
+          <Carousel onPageChange={handlePageChange}>
             <CarouselContent className="w-[calc(85vw-34px)] max-w-[478px]">
               {Object.entries(data).map(([id, cluster]) => (
                 <CarouselItem className="w-fit" key={id}>
-                  <h3 className="text-lg font-medium mb-2">
-                    {id === '-1' ? 'Ungrouped' : 'Group ' + (Number(id) + 1)}
-                  </h3>
+                  <div className="w-full flex justify-between items-center py-2 pr-1">
+                    <h3 className="text-lg font-medium mb-2">
+                      {id === '-1' ? 'Ungrouped' : 'Group ' + (Number(id) + 1)}
+                    </h3>
+                    {id !== '-1' && (
+                      <div className="flex gap-2 justify-between items-center">
+                        <span className="font-medium text-lg">Threshold:</span>
+                        <Select
+                          value={threshold}
+                          onValueChange={(value) => setThreshold(value)}
+                        >
+                          <SelectTrigger className="w-[60px]">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="10">10</SelectItem>
+                            <SelectItem value="9">9</SelectItem>
+                            <SelectItem value="8">8</SelectItem>
+                            <SelectItem value="7">7</SelectItem>
+                            <SelectItem value="6">6</SelectItem>
+                            <SelectItem value="5">5</SelectItem>
+                            <SelectItem value="4">4</SelectItem>
+                            <SelectItem value="3">3</SelectItem>
+                            <SelectItem value="2">2</SelectItem>
+                            <SelectItem value="1">1</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    )}
+                  </div>
                   <div className="h-[50vh] min-h-96 overflow-y-auto grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
                     {Object.entries(cluster as Cluster).map(
                       ([imagePath, count]) => {
@@ -220,7 +293,9 @@ export default function ImageDropzone() {
                               />
                             </CardContent>
                             <CardFooter className="p-0">
-                              <span className="m-4 text-base font-medium text-muted-foreground">{`Score: ${count}`}</span>
+                              {id !== '-1' && (
+                                <span className="m-4 text-base font-medium text-muted-foreground">{`Score: ${count}`}</span>
+                              )}
                             </CardFooter>
                           </Card>
                         );
@@ -233,7 +308,12 @@ export default function ImageDropzone() {
             <CarouselPrevious className="h-8 w-8" />
             <CarouselNext />
           </Carousel>
-          <Button>Download</Button>
+          <Button onClick={handleDownload} disabled={buttonLoading}>
+            {buttonLoading && (
+              <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
+            )}
+            Download
+          </Button>
         </DialogContent>
       </Dialog>
 
