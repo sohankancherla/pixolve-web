@@ -103,13 +103,18 @@ export default function ImageDropzone() {
         setOpen(true);
       })
       .catch((error) => {
+        let message;
+        if (error.status === 429) {
+          message = 'Exceeded limit of 2 generations per day';
+        } else if (error.status === 500) {
+          message = 'Images are not similar enough to merge';
+        } else {
+          message = error.message;
+        }
         toast({
           variant: 'destructive',
           title: 'Uh oh! Something went wrong.',
-          description:
-            error.status === 429
-              ? 'Exceeded limit of 2 generations per day.'
-              : error.message,
+          description: message,
         });
         setIsLoading(false);
       });
