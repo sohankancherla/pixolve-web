@@ -27,6 +27,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useToast } from '@/components/ui/use-toast';
 import JSZip from 'jszip';
 import axios from 'axios';
 import { useAuth } from '@clerk/nextjs';
@@ -54,6 +55,7 @@ export default function ImageDropzone() {
   const [currentPage, setCurrentPage] = useState(0);
   const [buttonLoading, setButtonLoading] = useState(false);
   const { getToken } = useAuth();
+  const { toast } = useToast();
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -127,7 +129,14 @@ export default function ImageDropzone() {
         setOpen(true);
       })
       .catch((error) => {
-        console.log(error);
+        toast({
+          variant: 'destructive',
+          title: 'Uh oh! Something went wrong.',
+          description:
+            error.status === 429
+              ? 'Exceeded limit of 2 generations per day.'
+              : error.message,
+        });
         setIsLoading(false);
       });
   };

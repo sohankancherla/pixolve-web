@@ -12,6 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { useToast } from '@/components/ui/use-toast';
 import JSZip from 'jszip';
 import axios from 'axios';
 import { useAuth } from '@clerk/nextjs';
@@ -29,6 +30,7 @@ export default function ImageDropzone() {
   const [files, setFiles] = useState<Map<string, FileItem>>(new Map());
   const [buttonLoading, setButtonLoading] = useState(false);
   const { getToken } = useAuth();
+  const { toast } = useToast();
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     if (acceptedFiles.length > 0) {
@@ -96,57 +98,33 @@ export default function ImageDropzone() {
       .then(async (response) => {
         const blob = new Blob([response.data], { type: 'image/png' });
         const url = URL.createObjectURL(blob);
-        console.log(url);
         setData(url);
         setIsLoading(false);
         setOpen(true);
       })
       .catch((error) => {
-        console.log(error);
+        toast({
+          variant: 'destructive',
+          title: 'Uh oh! Something went wrong.',
+          description:
+            error.status === 429
+              ? 'Exceeded limit of 2 generations per day.'
+              : error.message,
+        });
         setIsLoading(false);
       });
   };
 
-  // const handleDownload = async () => {
-  //   setButtonLoading(true);
-  //   try {
-  //     const zip = new JSZip();
-
-  //     if (currentPage === Object.keys(data).length - 1) {
-  //       const currentCluster = data[-1];
-  //       Object.keys(currentCluster).forEach((imagePath) => {
-  //         const imageName = imagePath.split('/').pop();
-  //         const fileItem = files.get(imageName!);
-  //         if (fileItem) {
-  //           zip.file(imageName!, fileItem.file);
-  //         }
-  //       });
-  //     } else {
-  //       const currentCluster = data[currentPage];
-  //       Object.entries(currentCluster).forEach(([imagePath, score]) => {
-  //         if (score >= parseInt(threshold)) {
-  //           const imageName = imagePath.split('/').pop();
-  //           const fileItem = files.get(imageName!);
-  //           if (fileItem) {
-  //             zip.file(imageName!, fileItem.file);
-  //           }
-  //         }
-  //       });
-  //     }
-
-  //     const content = await zip.generateAsync({ type: 'blob' });
-  //     const link = document.createElement('a');
-  //     link.href = URL.createObjectURL(content);
-  //     link.download = `group_${currentPage === Object.keys(data).length - 1 ? 'ungrouped' : currentPage + 1}.zip`;
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     document.body.removeChild(link);
-  //   } catch (error) {
-  //     console.error('Error downloading images:', error);
-  //   } finally {
-  //     setButtonLoading(false);
-  //   }
-  // };
+  const handleDownload = async () => {
+    setButtonLoading(true);
+    const link = document.createElement('a');
+    link.href = data;
+    link.download = 'merged-image.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setButtonLoading(false);
+  };
 
   const fileItems = useMemo(() => {
     return Array.from(files.entries()).map(([name, { file, url }]) => (
@@ -226,7 +204,7 @@ export default function ImageDropzone() {
               className="rounded-md object-cover border"
             />
           </div>
-          <Button disabled={buttonLoading}>
+          <Button onClick={handleDownload} disabled={buttonLoading}>
             {buttonLoading && (
               <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
             )}
