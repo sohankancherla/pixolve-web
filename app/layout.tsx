@@ -8,7 +8,8 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { ClerkProvider } from '@clerk/nextjs';
 
-import ThemeProvider from '@/components/theme-provider';
+import ThemeProvider from '@/components/ui/theme-provider';
+import { Toaster } from '@/components/ui/toaster';
 
 import { cn } from '@/lib/utils';
 
@@ -67,6 +68,7 @@ export default function RootLayout({
               </>
             )}
             {children}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

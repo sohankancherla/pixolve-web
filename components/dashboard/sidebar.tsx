@@ -8,15 +8,14 @@ import { usePathname } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
 
-import { UserCircle, UserCircleFilled } from '../icons/user-circle';
-import { Folder, FolderFilled } from '../icons/folder';
+import { Gear, GearFilled } from '../icons/gear';
 import { Sparkles, SparklesFilled } from '../icons/sparkles';
 import { Square2Stack, Square2StackFilled } from '../icons/square-2-stack';
 
 const navItemsTop = [
   {
-    name: 'Enhance',
-    href: '/dashboard/enhance',
+    name: 'Clean',
+    href: '/dashboard/clean',
     icon: Sparkles,
     filled: SparklesFilled,
   },
@@ -26,20 +25,14 @@ const navItemsTop = [
     icon: Square2Stack,
     filled: Square2StackFilled,
   },
-  {
-    name: 'Organize',
-    href: '/dashboard/organize',
-    icon: Folder,
-    filled: FolderFilled,
-  },
 ];
 
 const navItemsBottom = [
   {
-    name: 'Profile',
-    href: '/dashboard/profile',
-    icon: UserCircle,
-    filled: UserCircleFilled,
+    name: 'Settings',
+    href: '/dashboard/settings',
+    icon: Gear,
+    filled: GearFilled,
   },
 ];
 
@@ -68,10 +61,15 @@ export function MobileItem({
         {!pathname.includes(href) ? (
           <Icon
             className="h-6 w-6 mx-1 stroke-muted-foreground"
+            strokeWidth={1.75}
             aria-hidden="true"
           />
         ) : (
-          <Filled className="h-6 w-6 mx-1 text-primary" aria-hidden="true" />
+          <Filled
+            className="h-6 w-6 mx-1 text-primary"
+            strokeWidth={1.75}
+            aria-hidden="true"
+          />
         )}
         <span
           className={cn(
@@ -177,7 +175,7 @@ export function DesktopNavbar() {
       className="hidden sm:flex flex-col min-h-screen min-w-56 px-2 py-6 border-r border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-black"
       aria-label="Main Navigation"
     >
-      <Link href="/app" className="py-4 my-4" aria-label="Pixolve Home">
+      <Link href="/dashboard" className="py-4 my-4" aria-label="Pixolve Home">
         <Image
           src="/logo-purple.png"
           alt="Pixolve"

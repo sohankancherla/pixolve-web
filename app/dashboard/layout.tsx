@@ -2,7 +2,7 @@ import React from 'react';
 
 import { RedirectToSignIn, SignedIn, SignedOut } from '@clerk/nextjs';
 
-import Sidebar from '@/components/app/sidebar';
+import Sidebar from '@/components/dashboard/sidebar';
 
 export default async function AppLayout({
   children,
@@ -14,7 +14,9 @@ export default async function AppLayout({
       <SignedIn>
         <div className="flex flex-col-reverse sm:flex-row h-dvh w-full">
           <Sidebar />
-          <main className="h-full w-full overflow-auto">{children}</main>
+          <main className="h-screen w-full overflow-auto p-6 sm:p-10">
+            {children}
+          </main>
         </div>
       </SignedIn>
       <SignedOut>

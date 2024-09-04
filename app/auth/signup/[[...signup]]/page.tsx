@@ -45,7 +45,7 @@ export default function SignUpPage() {
             borderRadius: lightTheme.radius,
           },
           elements: {
-            cardBox: `sm:shadow-none border border-${resolvedTheme === 'dark' ? 'dark' : 'light'}`,
+            cardBox: `lg:shadow-none border border-${resolvedTheme === 'dark' ? 'dark' : 'light'}`,
             header: 'text-left text-xl tracking-tight',
           },
         }}
