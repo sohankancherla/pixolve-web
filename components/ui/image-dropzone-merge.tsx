@@ -89,7 +89,7 @@ export default function ImageDropzone() {
     formData.append('file', zipBlob, 'images.zip');
 
     axios
-      .post('http://localhost:8000/merge', formData, {
+      .post('https://backend.pixolve.app/merge', formData, {
         headers: {
           Authorization: `Bearer ${await getToken()}`,
         },

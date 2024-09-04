@@ -118,7 +118,7 @@ export default function ImageDropzone() {
     formData.append('file', zipBlob, 'images.zip');
 
     axios
-      .post('http://localhost:8000/cluster', formData, {
+      .post('https://backend.pixolve.app/cluster', formData, {
         headers: {
           Authorization: `Bearer ${await getToken()}`,
         },
@@ -129,7 +129,7 @@ export default function ImageDropzone() {
         setOpen(true);
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         toast({
           variant: 'destructive',
           title: 'Uh oh! Something went wrong.',
