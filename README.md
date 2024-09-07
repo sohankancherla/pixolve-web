@@ -76,6 +76,10 @@ npm run dev
 
 Visit http://localhost:3000 to access the application.
 
+3. Run the Backend Server
+
+Visit https://github.com/sujen07/pixolve-api for instructions on how to run the backend server.
+
 ## Authors
 
 * **Sohan Kancherla** - *Comp Sci Student* - [Sohan Kancherla](https://github.com/sohankancherla) - *Developer*
