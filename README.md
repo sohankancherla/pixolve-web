@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<br/>
+<p align="center">
+  <h3 align="center">Pixolve UI</h3>
+
+  <p align="center">
+    UI for Pixolve AI Image APIs
+    <br/>
+    <br/>
+  </p>
+</p>
+
+## Table Of Contents
+
+* [About the Project](#about-the-project)
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Authors](#authors)
+* [Acknowledgements](#acknowledgements)
+
+## About The Project
+
+
+
+https://github.com/sohankancherla/stock-market-simulator/assets/30853467/a8de61d0-be3a-4927-8508-ea635f8772b2
+
+
+
+Pixolve is an open-source API that offers AI-powered tools for image processing, along with a dedicated frontend UI. It currently includes two key features: Merge and Clean. The Merge feature combines similar images, selecting the best face for each individual, while the Clean feature groups images and assigns them a score out of 10. Users can then download images based on the score.
+
+## Built With
+
+This project leverages modern frontend technologies. Below is a list of the major tools and languages utilized:
+
+  ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+  ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+  ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+  ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 
 ## Getting Started
 
-First, run the development server:
+To run the frontend UI folllow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+* Node: The application is built using React. If you don't have Node installed, download and install it from https://nodejs.org/en/download/package-manager
+
+### Installation
+
+1. Fork and clone the repo
+
+2. Navigate to the project directory
+
+```sh
+cd pixolve-web
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Install dependencies using npm
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
 
-## Learn More
+After you have installed all prerequisites and set up the project, follow these steps to run the application:
 
-To learn more about Next.js, take a look at the following resources:
+1. Start the Dev Server
+```sh
+npm run dev
+```
+2. Accessing the Application
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Visit http://localhost:3000 to access the application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Authors
 
-## Deploy on Vercel
+* **Sohan Kancherla** - *Comp Sci Student* - [Sohan Kancherla](https://github.com/sohankancherla) - *Developer*
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
