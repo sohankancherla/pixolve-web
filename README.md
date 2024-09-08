@@ -22,9 +22,7 @@
 ## About The Project
 
 
-
-https://github.com/sohankancherla/stock-market-simulator/assets/30853467/a8de61d0-be3a-4927-8508-ea635f8772b2
-
+https://github.com/user-attachments/assets/5bf5c836-cff1-4971-9f30-88a17892b32b
 
 
 Pixolve is an open-source API that offers AI-powered tools for image processing, along with a dedicated frontend UI. It currently includes two key features: Merge and Clean. The Merge feature combines similar images, selecting the best face for each individual, while the Clean feature groups images and assigns them a score out of 10. Users can then download images based on the score.
